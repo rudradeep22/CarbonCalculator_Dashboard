@@ -9,6 +9,11 @@ import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 function DashboardCard01({lectures}) {
 
+  let sum=0;
+  lectures.forEach(lec => {
+    sum += lec;
+  });
+
   const chartData = {
     labels: [
       '12-01-2020',
@@ -102,7 +107,7 @@ function DashboardCard01({lectures}) {
         <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of Lectures</h2>
         <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Lectures</div>
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">780</div>
+          <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{sum}</div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div> */}
         </div>
       </div>
