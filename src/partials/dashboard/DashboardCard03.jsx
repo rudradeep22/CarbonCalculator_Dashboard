@@ -7,7 +7,7 @@ import EditMenu from '../../components/DropdownEditMenu';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
-function DashboardCard03() {
+function DashboardCard03({papers}) {
 
   const chartData = {
     labels: [
@@ -24,12 +24,13 @@ function DashboardCard03() {
     datasets: [
       // Indigo line
       {
-        data: [
-          540, 466, 540, 466, 385, 432, 334,
-          334, 289, 289, 200, 289, 222, 289,
-          289, 403, 554, 304, 289, 270, 134,
-          270, 829, 344, 388, 364,
-        ],
+        // data: [
+        //   540, 466, 540, 466, 385, 432, 334,
+        //   334, 289, 289, 200, 289, 222, 289,
+        //   289, 403, 554, 304, 289, 270, 134,
+        //   270, 829, 344, 388, 364,
+        // ],
+        data:papers,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
         borderColor: tailwindConfig().theme.colors.indigo[500],
@@ -45,12 +46,13 @@ function DashboardCard03() {
       },
       // Gray line
       {
-        data: [
-          689, 562, 477, 477, 477, 477, 458,
-          314, 430, 378, 430, 498, 642, 350,
-          145, 145, 354, 260, 188, 188, 300,
-          300, 282, 364, 660, 554,
-        ],
+        // data: [
+        //   689, 562, 477, 477, 477, 477, 458,
+        //   314, 430, 378, 430, 498, 642, 350,
+        //   145, 145, 354, 260, 188, 188, 300,
+        //   300, 282, 364, 660, 554,
+        // ],
+        data:[],
         borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
         borderWidth: 2,
         tension: 0,

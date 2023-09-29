@@ -19,11 +19,24 @@ import DashboardCard10 from '../partials/dashboard/DashboardCard10';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
+import ExcelUploader from '../utils/ExcelUploader';
 
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [lectures, setLectures] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [papers, setPapers] = useState([]);
 
+  const handleLectures = (newLectures) => {
+    setLectures(newLectures);
+  }
+  const handleProjects = (newProjects) => {
+    setProjects(newProjects);
+  }
+  const handlePapers = (newPapers) => {
+    setPapers(newPapers);
+  }
   return (
     <div className="flex h-screen overflow-hidden">
 
@@ -62,6 +75,9 @@ function Dashboard() {
                     <span className="hidden xs:block ml-2">Add view</span>
                 </button>                 */}
               </div>
+              <div>
+                <ExcelUploader setLectures={handleLectures} setProjects={handleProjects} setPapers={handlePapers}/>
+              </div>
 
             </div>
 
@@ -69,12 +85,11 @@ function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
 
               {/* Line chart (Acme Plus) */}
-              <DashboardCard01 />
+              {lectures.length > 0 && <DashboardCard01 lectures={lectures} />}
               {/* Line chart (Acme Advanced) */}
-              <DashboardCard02 />
+              {projects.length > 0 && <DashboardCard02 projects={projects} />}
               {/* Line chart (Acme Professional) */}
-              <DashboardCard03 />
-              {/* Bar chart (Direct vs Indirect) */}
+              {papers.length > 0 && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}
               {/* <DashboardCard04 /> */}
               {/* Line chart (Real Time Value) */}
               {/* <DashboardCard05 /> */}

@@ -7,7 +7,7 @@ import EditMenu from '../../components/DropdownEditMenu';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
-function DashboardCard02() {
+function DashboardCard02({projects}) {
 
   const chartData = {
     labels: [
@@ -24,12 +24,13 @@ function DashboardCard02() {
     datasets: [
       // Indigo line
       {
-        data: [
-          622, 622, 426, 471, 365, 365, 238,
-          324, 288, 206, 324, 324, 500, 409,
-          409, 273, 232, 273, 500, 570, 767,
-          808, 685, 767, 685, 685,
-        ],
+        // data: [
+        //   622, 622, 426, 471, 365, 365, 238,
+        //   324, 288, 206, 324, 324, 500, 409,
+        //   409, 273, 232, 273, 500, 570, 767,
+        //   808, 685, 767, 685, 685,
+        // ],
+        data: projects,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
         borderColor: tailwindConfig().theme.colors.indigo[500],
@@ -45,12 +46,13 @@ function DashboardCard02() {
       },
       // Gray line
       {
-        data: [
-          732, 610, 610, 504, 504, 504, 349,
-          349, 504, 342, 504, 610, 391, 192,
-          154, 273, 191, 191, 126, 263, 349,
-          252, 423, 622, 470, 532,
-        ],
+        // data: [
+        //   732, 610, 610, 504, 504, 504, 349,
+        //   349, 504, 342, 504, 610, 391, 192,
+        //   154, 273, 191, 191, 126, 263, 349,
+        //   252, 423, 622, 470, 532,
+        // ],
+        data:[],
         borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
         borderWidth: 2,
         tension: 0,
