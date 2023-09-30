@@ -4,8 +4,10 @@ import Excel from 'exceljs';
 
 const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
     const data_from_excel = [];
+    const name = "lectures";
 
     const handleChange = (e) => {
+        e.preventDefault();
         const file = e.target.files[0];
         const wb = new Excel.Workbook();
         const reader = new FileReader();
@@ -13,14 +15,14 @@ const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
         reader.readAsArrayBuffer(file);
         reader.onload = () => {
             const buffer = reader.result;
-            wb.xlsx.load(buffer).then((workbook) => {
+            const [newLectures, newProjects, newPapers] = [[], [], []];
+            wb.xlsx.load(buffer).then( async (workbook) => {
                 console.log(workbook, 'workbook instance');
                 workbook.eachSheet((sheet, id) => {
                     sheet.eachRow((row) => {
                         data_from_excel.push(row.values);
                     });
                 });
-                const [newLectures, newProjects, newPapers] = [[], [], []];
                 data_from_excel.slice(1).forEach(data => {
                     newLectures.push(data[1]);
                     newProjects.push(data[2]);
@@ -29,6 +31,19 @@ const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
                 setLectures(newLectures);
                 setProjects(newProjects);
                 setPapers(newPapers);
+                let result = await fetch(
+                    "http://localhost:3000/register", {
+                        method: "post",
+                        body: JSON.stringify({name, newLectures}),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                )
+                result = await result.json();
+                console.log(result);
+                if(result)
+                    console.log("Data saved succefully");
             });
         };
     };
