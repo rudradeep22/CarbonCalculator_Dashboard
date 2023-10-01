@@ -22,6 +22,8 @@ import DashboardCard13 from '../partials/dashboard/DashboardCard13';
 import ExcelUploader from '../utils/ExcelUploader';
 import axios from 'axios';
 
+const getUrl = import.meta.env.VITE_URL + "/getStats";
+
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -40,7 +42,7 @@ function Dashboard() {
   }
 
 useEffect( () => {
-  axios.get('http://localhost:3000/getStats')
+  axios.get(getUrl)
   .then((stats) => {
     setProjects(stats.data[0].projects);
     setLectures(stats.data[0].lectures);

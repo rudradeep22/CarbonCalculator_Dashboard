@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+require('dotenv').config();
 
-const db_url = "mongodb+srv://rudradeep22:Rudradeep@cluster0.l3ug8vb.mongodb.net/calculatorStats?retryWrites=true&w=majority";
+const db_url = process.env.MONGODB_URI;
 const PORTNO = 3000;
 const params = {
     useNewUrlParser: true,

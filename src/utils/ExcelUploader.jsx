@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Excel from 'exceljs';
 
-
+const fetchURL = import.meta.env.VITE_URL + "/register";
+console.log(fetchURL);
 const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
     const data_from_excel = [];
     const name = "lectures";
@@ -32,7 +33,7 @@ const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
                 setProjects(newProjects);
                 setPapers(newPapers);
                 let result = await fetch(
-                    "http://localhost:3000/register", {
+                    fetchURL, {
                         method: "post",
                         body: JSON.stringify({name, newLectures, newProjects, newPapers}),
                         headers: {
