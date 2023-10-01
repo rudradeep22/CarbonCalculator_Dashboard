@@ -34,7 +34,7 @@ const ExcelUploader = ({setLectures, setProjects, setPapers}) => {
                 let result = await fetch(
                     "http://localhost:3000/register", {
                         method: "post",
-                        body: JSON.stringify({name, newLectures}),
+                        body: JSON.stringify({name, newLectures, newProjects, newPapers}),
                         headers: {
                             'Content-Type': 'application/json'
                         }

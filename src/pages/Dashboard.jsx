@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
@@ -20,6 +20,7 @@ import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
 import ExcelUploader from '../utils/ExcelUploader';
+import axios from 'axios';
 
 function Dashboard() {
 
@@ -37,6 +38,17 @@ function Dashboard() {
   const handlePapers = (newPapers) => {
     setPapers(newPapers);
   }
+
+useEffect( () => {
+  axios.get('http://localhost:3000/getStats')
+  .then((stats) => {
+    setProjects(stats.data[0].projects);
+    setLectures(stats.data[0].lectures);
+    setPapers(stats.data[0].papers);
+  })
+  .catch((err)=> console.log(err))
+})
+
   return (
     <div className="flex h-screen overflow-hidden">
 
@@ -85,11 +97,11 @@ function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
 
               {/* Line chart (Acme Plus) */}
-              {lectures.length > 0 && <DashboardCard01 lectures={lectures} />}
+              {lectures && <DashboardCard01 lectures={lectures} />}
               {/* Line chart (Acme Advanced) */}
-              {projects.length > 0 && <DashboardCard02 projects={projects} />}
+              {projects && <DashboardCard02 projects={projects} />}
               {/* Line chart (Acme Professional) */}
-              {papers.length > 0 && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}
+              {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}
               {/* <DashboardCard04 /> */}
               {/* Line chart (Real Time Value) */}
               {/* <DashboardCard05 /> */}

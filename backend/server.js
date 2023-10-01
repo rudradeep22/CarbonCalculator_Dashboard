@@ -23,7 +23,15 @@ const StatsSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    data: {
+    lectures: {
+        type:[Number],
+        required: true,
+    },
+    projects: {
+        type:[Number],
+        required: true,
+    },
+    papers: {
         type:[Number],
         required: true,
     }
@@ -36,13 +44,16 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res)=>{
-    res.send("Backend working");
+app.get("/getStats", (req, res)=>{
+    Stats.find()
+    .then(stats => res.json(stats))
+    .catch(err => res.json(err))
 })
 
 app.post("/register", async (req, resp) => {
     try {
-        await Stats.create({name:req.body.name,data:req.body.newLectures})
+        await Stats.deleteMany({})
+        await Stats.create({name:req.body.name,lectures:req.body.newLectures, projects:req.body.newProjects, papers:req.body.newPapers})
  
     } catch (e) {
         resp.send(e);
