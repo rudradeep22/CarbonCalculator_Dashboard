@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 require('dotenv').config();
 
 const db_url = process.env.MONGODB_URI;
-const PORTNO = 3000;
+const PORTNO = process.env.PORT || 3000 ;
 const params = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -48,11 +48,11 @@ const StatsSchema = new mongoose.Schema({
         type:String,
         required: false,
     },
-    netZeroarmyCanttStatus: {
+    netZeroArmyCanttStatus: {
         type:String,
         required: false,
     },
-    outreachActivites: {
+    outreachActivities: {
         type:String,
         required: false,
     },
@@ -82,8 +82,8 @@ app.post("/register", async (req, resp) => {
             projects:req.body.newProjects,
             papers:req.body.newPapers,
             netZeroIITKStatus:req.body.newNetZeroIITKStatus,
-            netZeroarmyCanttStatus: req.body.newNetZeroArmyCanttStatus,
-            outreachActivites:req.body.newOutreachActivities
+            netZeroArmyCanttStatus: req.body.newNetZeroArmyCanttStatus,
+            outreachActivities:req.body.newOutreachActivities,
             })
  
     } catch (e) {
@@ -92,5 +92,5 @@ app.post("/register", async (req, resp) => {
 });
 
 app.listen(PORTNO, () => {
-    console.log("listening on port" + PORTNO);
+    console.log("Listening on port: " + PORTNO);
 });

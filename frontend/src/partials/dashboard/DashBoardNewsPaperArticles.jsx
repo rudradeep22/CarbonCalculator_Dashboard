@@ -7,10 +7,10 @@ import EditMenu from '../../components/DropdownEditMenu';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
-function DashboardCard01({linkedinPosts}) {
+function DashBoardNewsPaperArticles({newsPaperArticles}) {
 
   let sum=0;
-  linkedinPosts.forEach(lec => {
+  newsPaperArticles.forEach(lec => {
     sum += lec;
   });
   const chartData = {
@@ -46,7 +46,7 @@ function DashboardCard01({linkedinPosts}) {
       // Indigo line
       {
         // data: [900, 610, 610, 504, 504, 504, 349, 349, 504, 342, 504, 610, 391, 192, 154, 273, 191, 191, 126, 263, 349, 252, 423, 622, 470, 532],
-        data: linkedinPosts,
+        data: newsPaperArticles,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
         borderColor: tailwindConfig().theme.colors.indigo[500],
@@ -63,7 +63,7 @@ function DashboardCard01({linkedinPosts}) {
     ],
   };
   console.log(typeof(chartData.datasets.data));
-  // console.log(typeof(linkedinPosts));
+  // console.log(typeof(newsPaperArticles));
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
@@ -74,14 +74,14 @@ function DashboardCard01({linkedinPosts}) {
           {/* Menu button */}
           <EditMenu align="right" className="relative inline-flex">
             <li>
-              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="http://www.linkedin.com">
+              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="http://www.twitter.com">
                 View more
               </Link>
             </li>
           </EditMenu>
         </header>
-        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of linkedinPosts</h2>
-        <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">linkedinPosts</div>
+        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of News Paper Articles</h2>
+        <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">News Paper Articles</div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{sum}</div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div> */}
@@ -95,5 +95,4 @@ function DashboardCard01({linkedinPosts}) {
     </div>
   );
 }
-
-export default DashboardCard01;
+export default DashBoardNewsPaperArticles;
