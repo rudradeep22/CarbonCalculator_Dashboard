@@ -22,20 +22,40 @@ mongoose.connect(db_url, params)
 const StatsSchema = new mongoose.Schema({
     name: {
         type:String,
-        required:true
+        required:false
     },
-    lectures: {
+    linkedinPosts: {
         type:[Number],
-        required: true,
+        required: false,
+    },
+    twitterArticles: {
+        type:[Number],
+        required: false,
+    },
+    newsPaperArticles: {
+        type:[Number],
+        required: false,
     },
     projects: {
         type:[Number],
-        required: true,
+        required: false,
     },
     papers: {
         type:[Number],
-        required: true,
-    }
+        required: false,
+    },
+    netZeroIITKStatus: {
+        type:String,
+        required: false,
+    },
+    netZeroarmyCanttStatus: {
+        type:String,
+        required: false,
+    },
+    outreachActivites: {
+        type:String,
+        required: false,
+    },
 });
 const Stats = mongoose.model("stats", StatsSchema);
 Stats.createIndexes();
@@ -54,7 +74,17 @@ app.get("/getStats", (req, res)=>{
 app.post("/register", async (req, resp) => {
     try {
         await Stats.deleteMany({})
-        await Stats.create({name:req.body.name,lectures:req.body.newLectures, projects:req.body.newProjects, papers:req.body.newPapers})
+        await Stats.create(
+            {name:req.body.name,
+            linkedinPosts:req.body.newLinkedinPosts, 
+            twitterArticles:req.body.newTwitterArticles,
+            newsPaperArticles:req.body.newNewsPaperArticles,
+            projects:req.body.newProjects,
+            papers:req.body.newPapers,
+            netZeroIITKStatus:req.body.newNetZeroIITKStatus,
+            netZeroarmyCanttStatus: req.body.newNetZeroArmyCanttStatus,
+            outreachActivites:req.body.newOutreachActivities
+            })
  
     } catch (e) {
         resp.send(e);

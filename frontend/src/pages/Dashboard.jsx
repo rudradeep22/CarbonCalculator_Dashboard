@@ -27,12 +27,23 @@ const getUrl = import.meta.env.VITE_URL + "/getStats";
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [lectures, setLectures] = useState([]);
+  const [linkedinPosts, setLinkedinPosts] = useState([]);
+  const [twitterArticles, setTwitterArticles] = useState([]);
+  const [newsPaperArticles, setNewsPaperArticles] = useState([]);
   const [projects, setProjects] = useState([]);
   const [papers, setPapers] = useState([]);
+  const [netZeroIITKStatus, setNetZeroIITKStatus] = useState("");
+  const [netZeroArmyCanttStatus, setNetZeroArmyCanttStatus] = useState("");
+  const [outreachActivities, setOutreachActicities] = useState("");
 
-  const handleLectures = (newLectures) => {
-    setLectures(newLectures);
+  const handlelinkedinPosts = (newlinkedinPosts) => {
+    setLinkedinPosts(newlinkedinPosts);
+  }
+  const handletwitterArticles = (newTwitterArticles) => {
+    setTwitterArticles(newTwitterArticles);
+  }
+  const handlenewsPaperArticles = (newNewsPaperArticles) => {
+    setNewsPaperArticles(newNewsPaperArticles);
   }
   const handleProjects = (newProjects) => {
     setProjects(newProjects);
@@ -40,20 +51,34 @@ function Dashboard() {
   const handlePapers = (newPapers) => {
     setPapers(newPapers);
   }
+  const handlenetZeroIITKStatus = (newNetZeroIITKStatus) => {
+    setNetZeroIITKStatus(newNetZeroIITKStatus);
+  }
+  const handlenetZeroArmyCanttStatus = (newNetZeroArmyCanttStatus) => {
+    setNetZeroArmyCanttStatus(newNetZeroArmyCanttStatus);
+  }
+  const handleoutreachActivities = (newOutreachActivities) => {
+    setOutreachActicities(newOutreachActivities);
+  }
 
 useEffect( () => {
   axios.get(getUrl)
   .then((stats) => {
+    setLinkedinPosts(stats.data[0].linkedinPosts);
+    setTwitterArticles(stats.data[0].twitterArticles);
+    setNewsPaperArticles(stats.data[0].newsPaperArticles);
     setProjects(stats.data[0].projects);
-    setLectures(stats.data[0].lectures);
     setPapers(stats.data[0].papers);
+    setNetZeroIITKStatus(stats.data[0].netZeroIITKStatus);
+    setNetZeroArmyCanttStatus(stats.data[0].netZeroArmyCanttStatus);
+    setOutreachActicities(stats.data[0].outreachActivities);
   })
   .catch((err)=> console.log(err))
 },[])
 
+
   return (
     <div className="flex h-screen overflow-hidden">
-
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -90,7 +115,7 @@ useEffect( () => {
                 </button>                 */}
               </div>
               <div>
-                <ExcelUploader setLectures={handleLectures} setProjects={handleProjects} setPapers={handlePapers}/>
+                <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities}/>
               </div>
 
             </div>
@@ -99,7 +124,7 @@ useEffect( () => {
             <div className="grid grid-cols-12 gap-6">
 
               {/* Line chart (Acme Plus) */}
-              {lectures && <DashboardCard01 lectures={lectures} />}
+              {linkedinPosts && <DashboardCard01 linkedinPosts={linkedinPosts} />}
               {/* Line chart (Acme Advanced) */}
               {projects && <DashboardCard02 projects={projects} />}
               {/* Line chart (Acme Professional) */}
