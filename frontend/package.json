@@ -1,25 +1,19 @@
 {
-  "name": "mosaic-react",
+  "name": "frontend",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "serverrun": "nodemon ./backend/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
     "axios": "^1.5.1",
-    "body-parser": "^1.20.2",
     "chart.js": "^4.3.0",
     "chartjs-adapter-moment": "^1.0.1",
-    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "exceljs": "^4.3.0",
-    "express": "^4.18.2",
     "moment": "^2.29.4",
-    "mongoose": "^7.5.3",
-    "nodemon": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flatpickr": "^3.10.13",

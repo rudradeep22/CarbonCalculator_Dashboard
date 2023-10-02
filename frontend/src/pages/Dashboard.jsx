@@ -49,7 +49,7 @@ useEffect( () => {
     setPapers(stats.data[0].papers);
   })
   .catch((err)=> console.log(err))
-})
+},[])
 
   return (
     <div className="flex h-screen overflow-hidden">

@@ -13,7 +13,6 @@ function DashboardCard01({lectures}) {
   lectures.forEach(lec => {
     sum += lec;
   });
-
   const chartData = {
     labels: [
       '12-01-2020',
@@ -61,23 +60,10 @@ function DashboardCard01({lectures}) {
         pointHoverBorderWidth: 0,
         clip: 20,
       },
-      // Gray line
-      {
-        // data: [532, 532, 532, 404, 404, 314, 314, 314, 314, 314, 234, 314, 234, 234, 314, 314, 314, 388, 314, 202, 202, 202, 202, 314, 720, 642],
-        data:[],
-        borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        pointHoverBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,
-        clip: 20,
-      },
     ],
   };
+  console.log(typeof(chartData.datasets.data));
+  // console.log(typeof(lectures));
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
