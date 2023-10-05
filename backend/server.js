@@ -65,13 +65,13 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/getStats", (req, res)=>{
+app.get("/api/getStats", (req, res)=>{
     Stats.find()
     .then(stats => res.json(stats))
     .catch(err => res.json(err))
 })
 
-app.post("/register", async (req, resp) => {
+app.post("/api/register", async (req, resp) => {
     try {
         await Stats.deleteMany({})
         await Stats.create(
