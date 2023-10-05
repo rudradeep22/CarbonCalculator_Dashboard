@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Excel from 'exceljs';
 
-const fetchURL = import.meta.env.VITE_URL+":"+ import.meta.env.VITE_PORT + "/register";
+const fetchURL = import.meta.env.VITE_URL+":"+ import.meta.env.VITE_PORT + "/api/register";
 console.log(fetchURL);
 const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticles,  setProjects, setPapers, setNetZeroIITKStatus, setNetZeroArmyCanttStatus, setOutreachActicities}) => {
     const data_from_excel = [];
