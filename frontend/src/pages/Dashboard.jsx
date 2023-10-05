@@ -14,7 +14,7 @@ import DashBoardOutreach from '../partials/dashboard/DashBoardOutreach';
 import ExcelUploader from '../utils/ExcelUploader';
 import axios from 'axios';
 
-const getUrl = import.meta.env.VITE_URL+ ":"+ import.meta.env.VITE_PORT + "/api/getStats";
+const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
 function Dashboard() {
 
