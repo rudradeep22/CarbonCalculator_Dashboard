@@ -62,7 +62,6 @@ function DashboardCard01({linkedinPosts}) {
       },
     ],
   };
-  console.log(typeof(chartData.datasets.data));
   const uniqueKey = JSON.stringify(chartData);
   // console.log(typeof(linkedinPosts));
 

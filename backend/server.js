@@ -28,10 +28,6 @@ const StatsSchema = new mongoose.Schema({
         type:[Number],
         required: false,
     },
-    twitterArticles: {
-        type:[Number],
-        required: false,
-    },
     newsPaperArticles: {
         type:[Number],
         required: false,
@@ -53,7 +49,7 @@ const StatsSchema = new mongoose.Schema({
         required: false,
     },
     outreachActivities: {
-        type:String,
+        type:[String],
         required: false,
     },
 });
@@ -77,7 +73,6 @@ app.post("/api/register", async (req, resp) => {
         await Stats.create(
             {name:req.body.name,
             linkedinPosts:req.body.newLinkedinPosts, 
-            twitterArticles:req.body.newTwitterArticles,
             newsPaperArticles:req.body.newNewsPaperArticles,
             projects:req.body.newProjects,
             papers:req.body.newPapers,
