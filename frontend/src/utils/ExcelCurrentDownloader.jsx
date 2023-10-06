@@ -10,19 +10,19 @@ class ExcelDownload extends React.Component {
 
     // Define columns
     const columns = [
-      { header: 'Linkedin Posts', key: 'linkedinPosts', width: 15 },
-      { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15 },
-      { header: 'Projects', key: 'projects', width: 15 },
-      { header: 'Papers', key: 'papers', width: 15 },
+      { header: 'Linkedin Posts', key: 'linkedinPosts', width: 15, style: { font: { bold: true } } },
+      { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15, style: { font: { bold: true } } },
+      { header: 'Projects', key: 'projects', width: 15, style: { font: { bold: true } } },
+      { header: 'Papers', key: 'papers', width: 15, style: { font: { bold: true } } },
     ];
 
     if (netZeroIITKStatus !== undefined && netZeroArmyCanttStatus !== undefined) {
       columns.push(
-        { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15 },
-        { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15 }
+        { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15, style: { font: { bold: true } } },
+        { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15, style: { font: { bold: true } } }
       );
     }
-    columns.push({ header: 'Outreach Activities', key: 'outreachActivities', width: 15 });
+    columns.push({ header: 'Outreach Activities', key: 'outreachActivities', width: 15, style: { font: { bold: true } } });
     worksheet.columns = columns;
 
     linkedinPosts.forEach((val, index) => {
