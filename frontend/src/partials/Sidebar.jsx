@@ -66,7 +66,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {/* Close button */}
           <button
             ref={trigger}
-            className="lg:hidden text-black-500 hover:text-black-400"
+            className="lg:hidden text-yellow-500 hover:text-yellow-400"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}
@@ -313,8 +313,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
               <svg className="w-6 h-6 fill-current sidebar-expanded:rotate-180" viewBox="0 0 24 24">
-                <path className="text-black-400" d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z" />
-                <path className="text-black-600" d="M3 23H1V1h2z" />
+                <path className="text-yellow-400" d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z" />
+                <path className="text-yellow-600" d="M3 23H1V1h2z" />
               </svg>
             </button>
           </div>
