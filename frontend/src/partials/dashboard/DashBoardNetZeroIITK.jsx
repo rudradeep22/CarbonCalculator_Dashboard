@@ -1,8 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LineChart from '../../charts/LineChart01';
-import Icon from '../../images/icon-01.svg';
-import EditMenu from '../../components/DropdownEditMenu';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -26,11 +22,11 @@ function DashBoardNetZeroArmyCantt({netZeroIITKStatus}) {
         styles={buildStyles({
           backgroundColor: "green",
           textColor: "#fff",
+          textSize: "25px",
           pathColor: "yellow",
           trailColor: "transparent"
         })}
       />
-          {/* <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1"></div> */}
           </div>
         </div>
       </div>

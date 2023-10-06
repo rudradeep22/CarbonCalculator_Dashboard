@@ -26,6 +26,7 @@ function DashBoardNetZeroArmyCantt({netZeroArmyCanttStatus}) {
         styles={buildStyles({
           backgroundColor: "green",
           textColor: "#fff",
+          textSize: "25px",
           pathColor: "yellow",
           trailColor: "transparent"
         })}

@@ -6,6 +6,7 @@ function DashboardCard12({ outreachActivities }) {
   outreachActivities.forEach((activity, index) => {
     const backgroundColor = index % 2 === 0 ? 'bg-green-100' : 'bg-green-200';
 
+    if (activity){
     activityElements.push(
       <li className={`flex px-2 ${backgroundColor}`} key={index}>
         <div className="w-9 h-9 rounded-full shrink-0 bg-green-500 my-2 mr-3">
@@ -23,7 +24,7 @@ function DashboardCard12({ outreachActivities }) {
           </div>
         </div>
       </li>
-    );
+    );}
   });
 
   return (

@@ -9,11 +9,11 @@ import DashboardCard03 from '../partials/dashboard/DashboardCard03';
 import DashBoardNewsPaperArticles from '../partials/dashboard/DashBoardNewsPaperArticles';
 import DashBoardNetZeroIITK from '../partials/dashboard/DashBoardNetZeroIITK';
 import DashBoardNetZeroArmyCantt from '../partials/dashboard/DashBoardNetZeroArmyCantt';
-import DashBoardOutreach from '../partials/dashboard/DashBoardOutreach';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import ExcelUploader from '../utils/ExcelUploader';
 import axios from 'axios';
 import ExcelDownloader from '../utils/ExcelDownloader';
+import ExcelCurrentDownloader from '../utils/ExcelCurrentDownloader';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -87,6 +87,7 @@ useEffect( () => {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
+                <ExcelCurrentDownloader linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} />
                 <ExcelDownloader />
                 <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities}/>
               </div>
