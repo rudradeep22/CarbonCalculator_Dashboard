@@ -103,7 +103,7 @@ console.log("Out reach" +outreachActivities);
               {/* Line chart (Acme Plus) */}
               {linkedinPosts && <DashboardCard01 linkedinPosts={linkedinPosts} />}
               {/* Line chart (Acme Advanced) */}
-              {twitterArticles && <DashBoardTwitterArticles twitterArticles={twitterArticles} />}
+              {/* {twitterArticles && <DashBoardTwitterArticles twitterArticles={twitterArticles} />} */}
               {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />}
               {projects && <DashboardCard02 projects={projects} />}
               {/* Line chart (Acme Professional) */}

@@ -18,7 +18,7 @@ function getGreeting(){
 
 function WelcomeBanner() {
   return (
-    <div className="relative bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
+    <div className="relative bg-green-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
       {/* Content */}
       <div className="flex justify-around">
         {/* <img src={Icon}alt="Icon" className='w-16 b-6' /> */}
