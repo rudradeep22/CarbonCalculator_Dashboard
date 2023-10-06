@@ -43,19 +43,19 @@ function DashboardCard01({linkedinPosts}) {
       '01-01-2023',
     ],
     datasets: [
-      // Indigo line
+      // green line
       {
         // data: [900, 610, 610, 504, 504, 504, 349, 349, 504, 342, 504, 610, 391, 192, 154, 273, 191, 191, 126, 263, 349, 252, 423, 622, 470, 532],
         data: linkedinPosts,
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.green[500])}, 0.08)`,
+        borderColor: tailwindConfig().theme.colors.green[500],
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: tailwindConfig().theme.colors.green[500],
+        pointHoverBackgroundColor: tailwindConfig().theme.colors.green[500],
         pointBorderWidth: 0,
         pointHoverBorderWidth: 0,
         clip: 20,
@@ -63,6 +63,7 @@ function DashboardCard01({linkedinPosts}) {
     ],
   };
   console.log(typeof(chartData.datasets.data));
+  const uniqueKey = JSON.stringify(chartData);
   // console.log(typeof(linkedinPosts));
 
   return (
@@ -90,7 +91,7 @@ function DashboardCard01({linkedinPosts}) {
       {/* Chart built with Chart.js 3 */}
       <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">
         {/* Change the height attribute to adjust the chart height */}
-        {/* <LineChart data={chartData} width={389} height={128} /> */}
+        <LineChart key={uniqueKey} data={chartData} width={389} height={128} />
       </div>
     </div>
   );

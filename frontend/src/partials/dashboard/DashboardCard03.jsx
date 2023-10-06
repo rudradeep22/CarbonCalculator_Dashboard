@@ -27,7 +27,7 @@ function DashboardCard03({papers}) {
       '12-01-2022', '01-01-2023',
     ],
     datasets: [
-      // Indigo line
+      // green line
       {
         // data: [
         //   540, 466, 540, 466, 385, 432, 334,
@@ -37,40 +37,21 @@ function DashboardCard03({papers}) {
         // ],
         data:papers,
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.green[500])}, 0.08)`,
+        borderColor: tailwindConfig().theme.colors.green[500],
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+          pointBackgroundColor: tailwindConfig().theme.colors.green[500],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.green[500],
           pointBorderWidth: 0,
           pointHoverBorderWidth: 0,          
           clip: 20,
       },
-      // Gray line
-      {
-        // data: [
-        //   689, 562, 477, 477, 477, 477, 458,
-        //   314, 430, 378, 430, 498, 642, 350,
-        //   145, 145, 354, 260, 188, 188, 300,
-        //   300, 282, 364, 660, 554,
-        // ],
-        data:[],
-        borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        pointHoverBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,
-        clip: 20,
-      },
     ],
   };
+  const uniqueKey = JSON.stringify(chartData);
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
@@ -107,7 +88,7 @@ function DashboardCard03({papers}) {
       {/* Chart built with Chart.js 3 */}
       <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">
         {/* Change the height attribute to adjust the chart height */}
-        {/* <LineChart data={chartData} width={389} height={128} /> */}
+        <LineChart key={uniqueKey} data={chartData} width={389} height={128} />
       </div>
     </div>
   );
