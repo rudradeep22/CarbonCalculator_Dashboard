@@ -36,9 +36,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
 
           {/* Header: Right side */}
           <div className="flex items-center space-x-3">
-            <h1 className='font-bold text-yellow-500 text-xl font-mono'>Carbon Calculator for Chandrakanta Kesavan Center for Energy Policy and Climate Solutions</h1>
-            {/* <Notifications align="right" /> */}
-            <Help align="right" />
+            <h1 className='font-bold text-yellow-500 text-sm font-mono xl:text-xl'>Carbon Calculator for Chandrakanta Kesavan Center for Energy Policy and Climate Solutions</h1>
             <ThemeToggle />
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 dark:bg-slate-700 border-none" />

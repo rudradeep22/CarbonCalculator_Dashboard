@@ -1,5 +1,4 @@
 import React from 'react';
-import Icon from '../../images/favicon.png';
 
 function getGreeting(){
   const now = new Date();
