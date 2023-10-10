@@ -4,38 +4,50 @@ import BarChart from '../../charts/BarChart01';
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 
-function DashboardCard04() {
+function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) {
 
   const chartData = {
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
       '03-01-2021', '04-01-2021', '05-01-2021',
+      '12-01-2020', '01-01-2021', '02-01-2021',
+      '03-01-2021', '04-01-2021', '05-01-2021',
+      '12-01-2020', '01-01-2021', '02-01-2021',
+      '03-01-2021', '04-01-2021', '05-01-2021',
+      '12-01-2020', '01-01-2021', '02-01-2021',
+      '03-01-2021', '04-01-2021', '05-01-2021',
     ],
     datasets: [
-      // Light blue bars
+      // dark green bars
       {
-        label: 'Direct',
-        data: [
-          800, 1600, 900, 1300, 1950, 1700,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.blue[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
+        label: 'Linkedin Posts',
+        data: linkedinPosts,
+        backgroundColor: tailwindConfig().theme.colors.green[600],
+        hoverBackgroundColor: tailwindConfig().theme.colors.green[700],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
-      // Blue bars
+      // green bars
       {
-        label: 'Indirect',
-        data: [
-          4900, 2600, 5350, 4800, 5200, 4800,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+        label: 'Newspaper Articles',
+        data: newsPaperArticles,
+        backgroundColor: tailwindConfig().theme.colors.green[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
+      },
+      {
+        label: 'Twitter Articles',
+        data: twitterArticles,
+        backgroundColor: tailwindConfig().theme.colors.red[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.red[450],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
     ],
   };
+
+  const uniqueKey = JSON.stringify(chartData);
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
@@ -44,7 +56,7 @@ function DashboardCard04() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      <BarChart data={chartData} width={595} height={248} />
+      <BarChart key={uniqueKey} data={chartData} width={595} height={248} />
     </div>
   );
 }
