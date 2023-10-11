@@ -57,7 +57,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}w-48
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar  lg:w-20 lg:sidebar-expanded:!w-60 2xl:!w-60 shrink-0 bg-green-600 p-4 transition-all duration-200 ease-in-out dark:bg-slate-700 ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar  lg:w-20 lg:sidebar-expanded:!w-60 2xl:!w-60 shrink-0 bg-green-700 p-4 transition-all duration-200 ease-in-out dark:bg-slate-700 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
@@ -265,7 +265,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                                 d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
                               />
                             </svg>
-                      <span className="text-lg font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 hover:text-xl">
+                      <span className="text-xl font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 hover:text-2xl">
                         Calculator
                       </span>
                     </div>
@@ -293,7 +293,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                           d="M11 1C5.477 1 1 4.582 1 9c0 1.797.75 3.45 2 4.785V19l4.833-2.416C8.829 16.85 9.892 17 11 17c5.523 0 10-3.582 10-8s-4.477-8-10-8z"
                         />
                       </svg>
-                      <span className="text-lg font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 hover:text-xl">
+                      <span className="text-xl font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200 hover:text-2xl">
                         About
                       </span>
                     </div>

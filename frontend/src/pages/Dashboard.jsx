@@ -16,7 +16,9 @@ import ExcelDownloader from '../utils/ExcelDownloader';
 import ExcelCurrentDownloader from '../utils/ExcelCurrentDownloader';
 
 import DashBoardCard04 from '../partials/dashboard/DashboardCard04';
+import DashboardCard05 from '../partials/dashboard/DashboardCard05';
 import Followers from '../partials/dashboard/Followers';
+import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -75,7 +77,7 @@ useEffect( () => {
 },[])
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden font-roboto">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -107,10 +109,10 @@ useEffect( () => {
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
               {/* Line chart (Acme Plus) */}
+              <DashboardCard08 />
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
               {/* {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />} */}
               {projects && <DashboardCard02 projects={projects} />}
-              {/* Line chart (Acme Professional) */}
               {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}
               {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
               {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />}
