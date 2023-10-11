@@ -8,7 +8,6 @@ function DashboardCard08() {
 
   const chartData = {
     labels: [
-      '12-01-2020',
       '01-01-2021',
       '02-01-2021',
       '03-01-2021',
@@ -33,13 +32,12 @@ function DashboardCard08() {
       '10-01-2022',
       '11-01-2022',
       '12-01-2022',
-      '01-01-2023',
     ],
     datasets: [
       // Indigo line
       {
         label: 'Total funding',
-        data: [73, 64, 73, 69, 104, 104, 164, 164, 120, 120, 120, 148, 142, 104, 122, 110, 104, 152, 166, 233, 268, 252, 284, 284, 333, 323],
+        data: [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 333, 323],
         borderColor: tailwindConfig().theme.colors.red[500],
         fill: false,
         borderWidth: 2,
@@ -54,8 +52,8 @@ function DashboardCard08() {
       },
       // Blue line
       {
-        label: 'Monthly budget',
-        data: [184, 86, 42, 378, 42, 243, 38, 120, 0, 0, 42, 0, 84, 0, 276, 0, 124, 42, 124, 88, 88, 215, 156, 88, 124, 64],
+        label: 'Yearly budget',
+        data: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 124, 64],
         borderColor: tailwindConfig().theme.colors.blue[400],
         fill: false,
         borderWidth: 2,
@@ -71,7 +69,7 @@ function DashboardCard08() {
       // emerald line
       {
         label: 'Expenditure of budget',
-        data: [122, 170, 192, 86, 102, 124, 115, 115, 56, 104, 0, 72, 208, 186, 223, 188, 114, 162, 200, 150, 118, 118, 76, 122, 230, 268],
+        data: [1220, 1700, 1920, 860, 1020, 1240, 1150, 1150, 560, 1040, 1000, 720, 2080, 1860, 2230, 1880, 1140, 1620, 2000, 1500, 1180, 1180, 760, 1220, 2300, 2680],
         borderColor: tailwindConfig().theme.colors.emerald[500],
         fill: false,
         borderWidth: 2,
