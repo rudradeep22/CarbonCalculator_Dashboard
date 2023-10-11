@@ -3,7 +3,7 @@ import Excel from 'exceljs';
 
 class ExcelDownload extends React.Component {
   downloadExcel = () => {
-    const { linkedinPosts, newTwitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus } = this.props;
+    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus } = this.props;
 
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet('Sheet1');
@@ -27,7 +27,7 @@ class ExcelDownload extends React.Component {
     worksheet.columns = columns;
 
     linkedinPosts.forEach((val, index) => {
-      const row = { linkedinPosts: val, newTwitterArticles: newTwitterArticles[index], newsPaperArticles: newsPaperArticles[index], projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index] };
+      const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index] };
     
       if (index === 0) {
         row.netZeroIITKStatus = netZeroIITKStatus;
