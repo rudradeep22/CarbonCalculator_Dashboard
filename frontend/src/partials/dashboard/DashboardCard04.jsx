@@ -8,14 +8,11 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
 
   const chartData = {
     labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
+      '01-01-2023', '02-01-2023',
+      '03-01-2023', '04-01-2023', '05-01-2023',
+      '06-01-2023', '07-01-2023', '08-01-2023',
+      '09-01-2023', '10-01-2023', '11-01-2023',
+      '12-01-2023'
     ],
     datasets: [
       // dark green bars
@@ -50,10 +47,10 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
   const uniqueKey = JSON.stringify(chartData);
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
+    <div className="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+      {/* <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">Direct VS Indirect</h2>
-      </header>
+      </header> */}
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
       <BarChart key={uniqueKey} data={chartData} width={595} height={248} />

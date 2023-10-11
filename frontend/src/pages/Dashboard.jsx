@@ -16,6 +16,7 @@ import ExcelDownloader from '../utils/ExcelDownloader';
 import ExcelCurrentDownloader from '../utils/ExcelCurrentDownloader';
 
 import DashBoardCard04 from '../partials/dashboard/DashboardCard04';
+import Followers from '../partials/dashboard/Followers';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -95,6 +96,7 @@ useEffect( () => {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
+                <Followers />
                 <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} />
                 <ExcelDownloader />
                 <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities}/>
@@ -106,7 +108,7 @@ useEffect( () => {
             <div className="grid grid-cols-12 gap-6">
               {/* Line chart (Acme Plus) */}
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
-              {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />}
+              {/* {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />} */}
               {projects && <DashboardCard02 projects={projects} />}
               {/* Line chart (Acme Professional) */}
               {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}

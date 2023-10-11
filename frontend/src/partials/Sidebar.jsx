@@ -57,7 +57,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}w-48
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar  lg:w-20 lg:sidebar-expanded:!w-60 2xl:!w-60 shrink-0 bg-green-600 p-4 transition-all duration-200 ease-in-out dark:bg-indigo-700 ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar  lg:w-20 lg:sidebar-expanded:!w-60 2xl:!w-60 shrink-0 bg-green-600 p-4 transition-all duration-200 ease-in-out dark:bg-slate-700 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
