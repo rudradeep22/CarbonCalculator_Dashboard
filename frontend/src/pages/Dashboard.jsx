@@ -20,6 +20,7 @@ import DashboardCard05 from '../partials/dashboard/DashboardCard05';
 import Followers from '../partials/dashboard/Followers';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import Loading from '../partials/dashboard/Loading';
+import { BarWave } from "react-cssfx-loading";
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -121,8 +122,9 @@ useEffect( () => {
 
             </div>
             {/* Loading  */}
-            <div className='flex flex-wrap items-center justify-around'>
+            <div className='flex flex-wrap flex-col items-center justify-around'>
             <Loading funding1={funding1} />
+            {(funding1.length <= 0) && <BarWave color='green' />}
             </div>
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">

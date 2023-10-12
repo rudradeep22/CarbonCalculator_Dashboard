@@ -3,7 +3,7 @@ const Loading = ({funding1}) => {
         <>
         {funding1.length <= 0 &&
         <div>
-            <h1 className="text-bold text-5xl"> Loading . . . </h1>
+            <h1 className="text-bold text-5xl mb-10">Fetching data...</h1>
         </div>}
         </>
      );
