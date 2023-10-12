@@ -19,6 +19,7 @@ import DashBoardCard04 from '../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../partials/dashboard/DashboardCard05';
 import Followers from '../partials/dashboard/Followers';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
+import Loading from '../partials/dashboard/Loading';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -119,15 +120,17 @@ useEffect( () => {
               </div>
 
             </div>
-
+            {/* Loading  */}
+            <div className='flex flex-wrap items-center justify-around'>
+            <Loading funding1={funding1} />
+            </div>
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
-              {/* Line chart (Acme Plus) */}
-              {funding1 && funding2 && funding3 && <DashboardCard08 funding1={funding1} funding2={funding2} funding3={funding3}/>}
+              {funding1 && <DashboardCard08 funding1={funding1} funding2={funding2} funding3={funding3}/>}
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
               {/* {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />} */}
               {projects && <DashboardCard02 projects={projects} />}
-              {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart (Direct vs Indirect) */}
+              {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart */}
               {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
               {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />}
               {outreachActivities && <DashboardCard12 outreachActivities={outreachActivities}/>}

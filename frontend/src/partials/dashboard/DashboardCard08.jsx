@@ -88,13 +88,17 @@ function DashboardCard08( {funding1, funding2, funding3}) {
   const uniquekey = JSON.stringify(chartData);
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-        <h2 className=" text-2xl font-semibold text-slate-800 dark:text-slate-100">Funding</h2>
-      </header>
-      <LineChart key={uniquekey} data={chartData} width={595} height={248} />
-    </div>
+    <>
+      {funding1.length > 0 && (
+        <div className="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+          <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
+            <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">Funding</h2>
+          </header>
+          <LineChart key={uniquekey} data={chartData} width={595} height={248} />
+        </div>
+      )}
+    </>
   );
-}
+}  
 
 export default DashboardCard08;

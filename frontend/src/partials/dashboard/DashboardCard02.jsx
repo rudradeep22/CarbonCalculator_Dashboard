@@ -44,6 +44,8 @@ function DashboardCard02({projects}) {
   const uniqueKey = JSON.stringify(chartData);
 
   return (
+    <>
+    {projects.length > 0 && 
     <div className="flex flex-col col-span-full hover:scale-105 transition-transform duration-250 sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
@@ -72,6 +74,8 @@ function DashboardCard02({projects}) {
         <BarChart02 key={uniqueKey} data={chartData} width={389} height={128} />
       </div>
     </div>
+    }
+    </>
   );
 }
 
