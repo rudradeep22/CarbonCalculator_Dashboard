@@ -45,11 +45,11 @@ const StatsSchema = new mongoose.Schema({
         required: false,
     },
     netZeroIITKStatus: {
-        type:Number,
+        type:String,
         required: false,
     },
     netZeroArmyCanttStatus: {
-        type:Number,
+        type:String,
         required: false,
     },
     outreachActivities: {

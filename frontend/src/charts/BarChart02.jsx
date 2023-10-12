@@ -59,10 +59,10 @@ function BarChart02({
             stacked: true,
             type: 'time',
             time: {
-              parser: 'MM-DD-YYYY',
-              unit: 'month',
+              parser: 'YYYY',
+              unit: 'year',
               displayFormats: {
-                month: 'MMM YY',
+                month: 'YY',
               },
             },
             border: {
