@@ -21,6 +21,7 @@ import Followers from '../partials/dashboard/Followers';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import Loading from '../partials/dashboard/Loading';
 import { BarWave } from "react-cssfx-loading";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -92,6 +93,10 @@ useEffect( () => {
   .catch((err)=> console.log(err))
 },[])
 
+const { user, loginWithRedirect, isAuthenticated, logout} = useAuth0();
+if(user)
+  console.log(user.email);
+
   return (
     <div className="flex h-screen overflow-hidden font-roboto">
       {/* Sidebar */}
@@ -105,8 +110,14 @@ useEffect( () => {
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-
             {/* Welcome banner */}
+            <div className='flex justify-end mb-5'>
+              {isAuthenticated ? (
+                <button className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700' onClick={() => logout()}>Log Out</button>
+              ) : (
+                <button className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700' onClick={() => loginWithRedirect()}>Log In</button>
+              )}
+            </div>
             <WelcomeBanner />
 
             {/* Dashboard actions */}
@@ -115,11 +126,14 @@ useEffect( () => {
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
                 <Followers />
-                <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} />
-                <ExcelDownloader />
-                <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities} setFunding1={setFunding1} setFunding2={setFunding2} setFunding3={setFunding3}/>
+                {user && user.email === import.meta.env.VITE_ADMIN_EMAIL && (
+                  <div className='flex flex-wrap justify-around gap-3'>
+                    <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} />
+                    <ExcelDownloader />
+                    <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities} setFunding1={setFunding1} setFunding2={setFunding2} setFunding3={setFunding3}/>
+                  </div>
+                )}
               </div>
-
             </div>
             {/* Loading  */}
             <div className='flex flex-wrap flex-col items-center justify-around'>
