@@ -3,31 +3,36 @@ import Excel from 'exceljs';
 
 class ExcelDownload extends React.Component {
   downloadExcel = () => {
-    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus } = this.props;
+    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus, funding1, funding2, funding3 } = this.props;
 
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet('Sheet1');
 
     // Define columns
     const columns = [
-      { header: 'Linkedin Posts', key: 'linkedinPosts', width: 15, style: { font: { bold: true } } },
-      { header: 'Twitter Articles', key: 'twitterArticles', width: 15, style: { font: { bold: true } } },
-      { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15, style: { font: { bold: true } } },
-      { header: 'Projects', key: 'projects', width: 15, style: { font: { bold: true } } },
-      { header: 'Papers', key: 'papers', width: 15, style: { font: { bold: true } } },
+      { header: 'Linkedin Posts', key: 'linkedinPosts', width: 15},
+      { header: 'Twitter Articles', key: 'twitterArticles', width: 15},
+      { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15},
+      { header: 'Projects', key: 'projects', width: 15},
+      { header: 'Papers', key: 'papers', width: 15},
     ];
 
     if (netZeroIITKStatus !== undefined && netZeroArmyCanttStatus !== undefined) {
       columns.push(
-        { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15, style: { font: { bold: true } } },
-        { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15, style: { font: { bold: true } } }
+        { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15},
+        { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15}
       );
     }
-    columns.push({ header: 'Outreach Activities', key: 'outreachActivities', width: 15, style: { font: { bold: true } } });
+    columns.push({ header: 'Outreach Activities', key: 'outreachActivities', width: 15});
+    columns.push([
+      { header: 'Total Funding', key: 'funding1', width: 15},
+      { header: 'Monthly Budget', key: 'funding2', width: 15},
+      { header: 'Expenditure', key: 'funding3', width: 15},
+    ]);
     worksheet.columns = columns;
 
     linkedinPosts.forEach((val, index) => {
-      const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index] };
+      const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index], funding1: funding1[index], funding2: funding2[index], funding3: funding3[index] };
     
       if (index === 0) {
         row.netZeroIITKStatus = netZeroIITKStatus;

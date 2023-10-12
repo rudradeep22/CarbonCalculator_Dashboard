@@ -33,6 +33,9 @@ function Dashboard() {
   const [netZeroIITKStatus, setNetZeroIITKStatus] = useState("");
   const [netZeroArmyCanttStatus, setNetZeroArmyCanttStatus] = useState("");
   const [outreachActivities, setOutreachActicities] = useState("");
+  const [funding1, setFunding1] = useState([]);
+  const [funding2, setFunding2] = useState([]);
+  const [funding3, setFunding3] = useState([]);
 
   const handlelinkedinPosts = (newlinkedinPosts) => {
     setLinkedinPosts(newlinkedinPosts);
@@ -55,9 +58,17 @@ function Dashboard() {
   const handleoutreachActivities = (newOutreachActivities) => {
     setOutreachActicities(newOutreachActivities);
   }
-
   const handletwitterArticles = (twitterArticles) => {
     setTwitterArticles(twitterArticles);
+  }
+  const handleFunding1 = (funding1) => {
+    setFunding1(funding1);
+  }
+  const handleFunding2 = (funding2) => {
+    setFunding2(funding2);
+  }
+  const handleFunding3 = (funding3) => {
+    setFunding3(funding3);
   }
 
 useEffect( () => {
@@ -72,6 +83,9 @@ useEffect( () => {
     setNetZeroIITKStatus(stats.data[0].netZeroIITKStatus);
     setNetZeroArmyCanttStatus(stats.data[0].netZeroArmyCanttStatus);
     setOutreachActicities(stats.data[0].outreachActivities);
+    setFunding1(stats.data[0].funding1);
+    setFunding2(stats.data[0].funding2);
+    setFunding3(stats.data[0].funding3);
   })
   .catch((err)=> console.log(err))
 },[])
@@ -99,9 +113,9 @@ useEffect( () => {
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
                 <Followers />
-                <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} />
+                <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} />
                 <ExcelDownloader />
-                <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities}/>
+                <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities} setFunding1={setFunding1} setFunding2={setFunding2} setFunding3={setFunding3}/>
               </div>
 
             </div>
@@ -109,7 +123,7 @@ useEffect( () => {
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
               {/* Line chart (Acme Plus) */}
-              <DashboardCard08 />
+              {funding1 && funding2 && funding3 && <DashboardCard08 funding1={funding1} funding2={funding2} funding3={funding3}/>}
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
               {/* {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />} */}
               {projects && <DashboardCard02 projects={projects} />}

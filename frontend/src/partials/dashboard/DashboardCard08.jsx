@@ -4,7 +4,7 @@ import LineChart from '../../charts/LineChart02';
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 
-function DashboardCard08() {
+function DashboardCard08( {funding1, funding2, funding3}) {
 
   const chartData = {
     labels: [
@@ -37,7 +37,7 @@ function DashboardCard08() {
       // Indigo line
       {
         label: 'Total funding',
-        data: [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 333, 323],
+        data: funding1,
         borderColor: tailwindConfig().theme.colors.red[500],
         fill: false,
         borderWidth: 2,
@@ -53,7 +53,7 @@ function DashboardCard08() {
       // Blue line
       {
         label: 'Yearly budget',
-        data: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 124, 64],
+        data: funding2,
         borderColor: tailwindConfig().theme.colors.blue[400],
         fill: false,
         borderWidth: 2,
@@ -69,7 +69,7 @@ function DashboardCard08() {
       // emerald line
       {
         label: 'Expenditure of budget',
-        data: [1220, 1700, 1920, 860, 1020, 1240, 1150, 1150, 560, 1040, 1000, 720, 2080, 1860, 2230, 1880, 1140, 1620, 2000, 1500, 1180, 1180, 760, 1220, 2300, 2680],
+        data: funding3,
         borderColor: tailwindConfig().theme.colors.emerald[500],
         fill: false,
         borderWidth: 2,
@@ -85,12 +85,14 @@ function DashboardCard08() {
     ],
   };
 
+  const uniquekey = JSON.stringify(chartData);
+
   return (
     <div className="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
         <h2 className=" text-2xl font-semibold text-slate-800 dark:text-slate-100">Funding</h2>
       </header>
-      <LineChart data={chartData} width={595} height={248} />
+      <LineChart key={uniquekey} data={chartData} width={595} height={248} />
     </div>
   );
 }
