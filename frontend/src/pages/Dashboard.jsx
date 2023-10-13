@@ -94,8 +94,11 @@ useEffect( () => {
 },[])
 
 const { user, loginWithRedirect, isAuthenticated, logout} = useAuth0();
-if(user)
-  console.log(user.email);
+const [name, setName] = useState("")
+useEffect(() => {
+  if(user)
+    setName(user.given_name)
+}, user)
 
   return (
     <div className="flex h-screen overflow-hidden font-roboto">
@@ -113,12 +116,12 @@ if(user)
             {/* Welcome banner */}
             <div className='flex justify-end mb-5'>
               {isAuthenticated ? (
-                <button className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700' onClick={() => logout()}>Log Out</button>
+                <button className='bg-red-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-red-700' onClick={() => logout()}>Log Out</button>
               ) : (
                 <button className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700' onClick={() => loginWithRedirect()}>Log In</button>
               )}
             </div>
-            <WelcomeBanner />
+            <WelcomeBanner name={name} isAuthenticated={isAuthenticated}/>
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
