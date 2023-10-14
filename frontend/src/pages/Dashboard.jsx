@@ -22,6 +22,7 @@ import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import Loading from '../partials/dashboard/Loading';
 import { BarWave } from "react-cssfx-loading";
 import { useAuth0 } from '@auth0/auth0-react';
+import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -39,6 +40,9 @@ function Dashboard() {
   const [funding1, setFunding1] = useState([]);
   const [funding2, setFunding2] = useState([]);
   const [funding3, setFunding3] = useState([]);
+  const [talks, setTalks] = useState([]);
+  const [linkedinFollowers, setLinkedinFollowers] = useState(0);
+  const [twitterFollowers, setTwitterFollowers] = useState(0);
 
   const handlelinkedinPosts = (newlinkedinPosts) => {
     setLinkedinPosts(newlinkedinPosts);
@@ -73,6 +77,15 @@ function Dashboard() {
   const handleFunding3 = (funding3) => {
     setFunding3(funding3);
   }
+  const handleTalks = (talks) => {
+    setTalks(talks);
+  }
+  const handlelinkedinFollowers = (linkedinFollowers) => {
+    setLinkedinFollowers(linkedinFollowers);
+  }
+  const handletwitterFollowers = (twitterFollowers) => {
+    setTwitterFollowers(twitterFollowers);
+  }
 
 useEffect( () => {
   axios.get(getUrl)
@@ -89,6 +102,9 @@ useEffect( () => {
     setFunding1(stats.data[0].funding1);
     setFunding2(stats.data[0].funding2);
     setFunding3(stats.data[0].funding3);
+    setTalks(stats.data[0].talks);
+    setLinkedinFollowers(stats.data[0].linkedinFollowers);
+    setTwitterFollowers(stats.data[0].twitterFollowers);
   })
   .catch((err)=> console.log(err))
 },[])
@@ -128,12 +144,24 @@ useEffect(() => {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
-                <Followers />
+                {linkedinFollowers && <Followers linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />}
                 {user && user.email === import.meta.env.VITE_ADMIN_EMAIL && (
                   <div className='flex flex-wrap justify-around gap-3'>
-                    <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} />
+                    <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} talks={talks} linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />
                     <ExcelDownloader />
-                    <ExcelUploader setLinkedinPosts={handlelinkedinPosts} setTwitterArticles={handletwitterArticles} setNewsPaperArticles={handlenewsPaperArticles} setProjects={handleProjects} setPapers={handlePapers} setNetZeroIITKStatus={handlenetZeroIITKStatus} setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} setOutreachActicities={handleoutreachActivities} setFunding1={setFunding1} setFunding2={setFunding2} setFunding3={setFunding3}/>
+                    <ExcelUploader setLinkedinPosts={handlelinkedinPosts} 
+                    setTwitterArticles={handletwitterArticles} 
+                    setNewsPaperArticles={handlenewsPaperArticles} 
+                    setProjects={handleProjects} 
+                    setPapers={handlePapers} 
+                    setNetZeroIITKStatus={handlenetZeroIITKStatus} 
+                    setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} 
+                    setOutreachActicities={handleoutreachActivities} 
+                    setFunding1={setFunding1} 
+                    setFunding2={setFunding2} 
+                    setFunding3={setFunding3} 
+                    setTalks={setTalks} 
+                    setLinkedinFollowers={setLinkedinFollowers} setTwitterFollowers={setTwitterFollowers}/>
                   </div>
                 )}
               </div>
@@ -147,7 +175,7 @@ useEffect(() => {
             <div className="grid grid-cols-12 gap-6">
               {funding1 && <DashboardCard08 funding1={funding1} funding2={funding2} funding3={funding3}/>}
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
-              {/* {newsPaperArticles && <DashBoardNewsPaperArticles newsPaperArticles={newsPaperArticles} />} */}
+              {talks && <DashboardTalks talks={talks} />}
               {projects && <DashboardCard02 projects={projects} />}
               {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart */}
               {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}

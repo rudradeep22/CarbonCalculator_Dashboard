@@ -3,7 +3,7 @@ import Excel from 'exceljs';
 
 const fetchURL = import.meta.env.VITE_URL + "/api/register";
 console.log(fetchURL);
-const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticles,  setProjects, setPapers, setNetZeroIITKStatus, setNetZeroArmyCanttStatus, setOutreachActicities, setFunding1, setFunding2, setFunding3}) => {
+const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticles,  setProjects, setPapers, setNetZeroIITKStatus, setNetZeroArmyCanttStatus, setOutreachActicities, setFunding1, setFunding2, setFunding3, setTalks, setLinkedinFollowers, setTwitterFollowers}) => {
     const data_from_excel = [];
     const name = "statistics";
 
@@ -16,8 +16,9 @@ const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticl
         reader.readAsArrayBuffer(file);
         reader.onload = () => {
             const buffer = reader.result;
-            const [newLinkedinPosts, newTwitterArticles, newNewsPaperArticles, newProjects, newPapers, newOutreachActivities, newFunding1, newFunding2, newFunding3] = [[],[], [], [], [], [], [], [], []];
+            const [newLinkedinPosts, newTwitterArticles, newNewsPaperArticles, newProjects, newPapers, newOutreachActivities, newFunding1, newFunding2, newFunding3, newTalks] = [[],[], [], [], [], [], [], [], [], []];
             let [newNetZeroIITKStatus, newNetZeroArmyCanttStatus] = ["", ""];
+            let [newLinkedinFollowers, newTwitterFollowers] = [0, 0];
             wb.xlsx.load(buffer).then( async (workbook) => {
                 console.log(workbook, 'workbook instance');
                 workbook.eachSheet((sheet, id) => {
@@ -36,9 +37,12 @@ const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticl
                     newFunding1.push(data[9]);
                     newFunding2.push(data[10]);
                     newFunding3.push(data[11]);
+                    newTalks.push(data[12]);
                 })
                 newNetZeroIITKStatus += data_from_excel[1][6];
                 newNetZeroArmyCanttStatus += data_from_excel[1][7];
+                newLinkedinFollowers += data_from_excel[1][13];
+                newTwitterFollowers += data_from_excel[1][14];
                 setLinkedinPosts(newLinkedinPosts);
                 setTwitterArticles(newTwitterArticles);
                 setNewsPaperArticles(newNewsPaperArticles);
@@ -50,10 +54,13 @@ const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticl
                 setFunding1(newFunding1);
                 setFunding2(newFunding2);
                 setFunding3(newFunding3);
+                setTalks(newTalks);
+                setLinkedinFollowers(newLinkedinFollowers);
+                setTwitterFollowers(newTwitterFollowers);
                 let result = await fetch(
                     fetchURL, {
                         method: "post",
-                        body: JSON.stringify({name, newLinkedinPosts,newTwitterArticles, newNewsPaperArticles , newProjects, newPapers, newNetZeroIITKStatus, newNetZeroArmyCanttStatus, newOutreachActivities, newFunding1, newFunding2, newFunding3}),
+                        body: JSON.stringify({name, newLinkedinPosts,newTwitterArticles, newNewsPaperArticles , newProjects, newPapers, newNetZeroIITKStatus, newNetZeroArmyCanttStatus, newOutreachActivities, newFunding1, newFunding2, newFunding3, newTalks, newLinkedinFollowers, newTwitterFollowers}),
                         headers: {
                             'Content-Type': 'application/json'
                         }

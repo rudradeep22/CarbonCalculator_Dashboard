@@ -3,7 +3,7 @@ import Excel from 'exceljs';
 
 class ExcelDownload extends React.Component {
   downloadExcel = () => {
-    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus, funding1, funding2, funding3 } = this.props;
+    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus, funding1, funding2, funding3, talks, linkedinFollowers, twitterFollowers } = this.props;
 
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet('Sheet1');
@@ -15,28 +15,38 @@ class ExcelDownload extends React.Component {
       { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15},
       { header: 'Projects', key: 'projects', width: 15},
       { header: 'Papers', key: 'papers', width: 15},
-    ];
-
-    if (netZeroIITKStatus !== undefined && netZeroArmyCanttStatus !== undefined) {
-      columns.push(
-        { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15},
-        { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15}
-      );
-    }
-    columns.push({ header: 'Outreach Activities', key: 'outreachActivities', width: 15});
-    columns.push([
+      { header: 'Outreach Activities', key: 'outreachActivities', width: 15},
       { header: 'Total Funding', key: 'funding1', width: 15},
       { header: 'Monthly Budget', key: 'funding2', width: 15},
       { header: 'Expenditure', key: 'funding3', width: 15},
-    ]);
+      { header: 'Talks', key: 'talks', width: 15},
+      { header: 'Linkedin Followers', key: 'linkedinFollowers', width: 15},
+      { header: 'Twitter Followers', key: 'twitterFollowers', width: 15},
+    ];
+
+    if (netZeroIITKStatus !== undefined && netZeroArmyCanttStatus !== undefined) {
+      // Assuming 'columns' is the array you're working with
+    const newColumns = [
+    { header: 'Status of Net Zero IITK', key: 'netZeroIITKStatus', width: 15},
+    { header: 'Status of Net Zero Army Cantt', key: 'netZeroArmyCanttStatus', width: 15}
+    ];
+
+    // Insert after the 7th element (index 6)
+    columns.splice(6, 0, ...newColumns);
+    }
     worksheet.columns = columns;
 
     linkedinPosts.forEach((val, index) => {
-      const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index], funding1: funding1[index], funding2: funding2[index], funding3: funding3[index] };
+      const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], 
+        projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index], 
+        funding1: funding1[index], funding2: funding2[index], funding3: funding3[index], 
+        talks: talks[index]};
     
       if (index === 0) {
         row.netZeroIITKStatus = netZeroIITKStatus;
         row.netZeroArmyCanttStatus = netZeroArmyCanttStatus;
+        row.linkedinFollowers = linkedinFollowers;
+        row.twitterFollowers = twitterFollowers;
       }
 
       worksheet.addRow(row);

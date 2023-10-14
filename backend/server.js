@@ -68,6 +68,18 @@ const StatsSchema = new mongoose.Schema({
         type:[Number],
         required: false,
     },
+    talks: {
+        type:[Number],
+        required: false,
+    },
+    linkedinFollowers: {
+        type: Number,
+        required: false,
+    },
+    twitterFollowers: {
+        type: Number,
+        required: false,
+    }
 });
 const Stats = mongoose.model("stats", StatsSchema);
 Stats.createIndexes();
@@ -99,6 +111,9 @@ app.post("/api/register", async (req, resp) => {
             funding1: req.body.newFunding1,
             funding2: req.body.newFunding2,
             funding3: req.body.newFunding3,
+            talks: req.body.newTalks,
+            linkedinFollowers: req.body.newLinkedinFollowers,
+            twitterFollowers: req.body.newTwitterFollowers
             })
  
     } catch (e) {
