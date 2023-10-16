@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const bcrypt = require("bcryptjs")
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
@@ -19,69 +21,8 @@ mongoose.connect(db_url, params)
         console.error(err);
     });
 
-const StatsSchema = new mongoose.Schema({
-    name: {
-        type:String,
-        required:false
-    },
-    linkedinPosts: {
-        type:[Number],
-        required: false,
-    },
-    twitterArticles: {
-        type:[Number],
-        required: false,
-    },
-    newsPaperArticles: {
-        type:[Number],
-        required: false,
-    },
-    projects: {
-        type:[Number],
-        required: false,
-    },
-    papers: {
-        type:[Number],
-        required: false,
-    },
-    netZeroIITKStatus: {
-        type:String,
-        required: false,
-    },
-    netZeroArmyCanttStatus: {
-        type:String,
-        required: false,
-    },
-    outreachActivities: {
-        type:[String],
-        required: false,
-    },
-    funding1: {
-        type:[Number],
-        required: false,
-    },
-    funding2: {
-        type:[Number],
-        required: false,
-    },
-    funding3: {
-        type:[Number],
-        required: false,
-    },
-    talks: {
-        type:[Number],
-        required: false,
-    },
-    linkedinFollowers: {
-        type: Number,
-        required: false,
-    },
-    twitterFollowers: {
-        type: Number,
-        required: false,
-    }
-});
-const Stats = mongoose.model("stats", StatsSchema);
+const User = require("./models/user");
+const Stats = require("./models/stats");
 Stats.createIndexes();
 
 const app = express();
@@ -120,6 +61,61 @@ app.post("/api/register", async (req, resp) => {
         resp.send(e);
     }
 });
+
+app.post("/signup", async (req, res) => {
+    try{
+        const { email, password} = req.body;
+        if (!(email && password)) {
+            res.status(400).send("All input is required");
+          }
+        const oldUser = await User.findOne({ email });
+        if (oldUser) {
+            return res.status(409).send("User Already Exist. Please Login");
+          }
+        encryptedUserPassword = await bcrypt.hash(password, 10);
+
+        const user = await User.create({
+            email: email.toLowerCase(),
+            password: encryptedUserPassword,
+          });
+        const token = jwt.sign(
+            { user_id: user._id, email },
+            process.env.TOKEN_KEY,
+            {
+                expiresIn: "5h",
+            }
+        );
+        user.token = token;
+        res.status(201).json(user);
+    }
+    catch (err) {
+        console.log(err);
+      }
+})
+app.get("/signin", async (req, res) => {
+    try{
+        const { email, password } = req.body;
+        if (!(email && password)) {
+            res.status(400).send("All input is required");
+          }
+        const user = await User.findOne({ email });
+        if (user && (await bcrypt.compare(password, user.password))) {
+            // Create token
+            const token = jwt.sign(
+              { user_id: user._id, email },
+              process.env.TOKEN_KEY,
+              {
+                expiresIn: "5h",
+              }
+            );
+        user.token = token;
+        return res.status(200).json(user);
+        }
+        return res.status(400).send("Invalid Credentials");
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 app.listen(PORTNO, () => {
     console.log("Listening on port: " + PORTNO);
