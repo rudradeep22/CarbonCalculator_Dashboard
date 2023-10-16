@@ -26,7 +26,7 @@ import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
-function Dashboard() {
+function Dashboard( {isAuthenticated} ) {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [linkedinPosts, setLinkedinPosts] = useState([]);
@@ -90,7 +90,6 @@ function Dashboard() {
 useEffect( () => {
   axios.get(getUrl)
   .then((stats) => {
-    console.log(stats.data[0]);
     setLinkedinPosts(stats.data[0].linkedinPosts);
     setTwitterArticles(stats.data[0].twitterArticles);
     setNewsPaperArticles(stats.data[0].newsPaperArticles);
@@ -123,12 +122,6 @@ useEffect( () => {
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
             {/* Welcome banner */}
-            <Link
-              to="/login"
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-700 rounded-md text-center hover:bg-green-600 focus:outline-none focus:bg-green-600"
-                    >
-                        Go to Login
-                    </Link>
             <WelcomeBanner/>
 
             {/* Dashboard actions */}
@@ -137,23 +130,50 @@ useEffect( () => {
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
                 {linkedinFollowers && <Followers linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />}
-                  <div className='flex flex-wrap justify-around gap-3'>
-                    <ExcelCurrentDownloader linkedinPosts={linkedinPosts} twitterArticles={twitterArticles} newsPaperArticles={newsPaperArticles} projects={projects} papers={papers} netZeroIITKStatus={netZeroIITKStatus} netZeroArmyCanttStatus={netZeroArmyCanttStatus} outreachActivities={outreachActivities} funding1={funding1} funding2={funding2} funding3={funding3} talks={talks} linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />
-                    <ExcelDownloader />
-                    <ExcelUploader setLinkedinPosts={handlelinkedinPosts} 
-                    setTwitterArticles={handletwitterArticles} 
-                    setNewsPaperArticles={handlenewsPaperArticles} 
-                    setProjects={handleProjects} 
-                    setPapers={handlePapers} 
-                    setNetZeroIITKStatus={handlenetZeroIITKStatus} 
-                    setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} 
-                    setOutreachActicities={handleoutreachActivities} 
-                    setFunding1={setFunding1} 
-                    setFunding2={setFunding2} 
-                    setFunding3={setFunding3} 
-                    setTalks={setTalks} 
-                    setLinkedinFollowers={setLinkedinFollowers} setTwitterFollowers={setTwitterFollowers}/>
-                  </div>
+                { isAuthenticated || <Link
+              to="/login"
+              className="bg-green-600 text-xl text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-250 ease-in-out hover:text-2xl hover:bg-green-700"
+                    >
+                        Go to Login
+                    </Link>}
+                {isAuthenticated && (
+                    <div className='flex flex-wrap justify-around gap-3'>
+                      <ExcelCurrentDownloader 
+                        linkedinPosts={linkedinPosts} 
+                        twitterArticles={twitterArticles} 
+                        newsPaperArticles={newsPaperArticles} 
+                        projects={projects} 
+                        papers={papers} 
+                        netZeroIITKStatus={netZeroIITKStatus} 
+                        netZeroArmyCanttStatus={netZeroArmyCanttStatus} 
+                        outreachActivities={outreachActivities} 
+                        funding1={funding1} 
+                        funding2={funding2} 
+                        funding3={funding3} 
+                        talks={talks} 
+                        linkedinFollowers={linkedinFollowers} 
+                        twitterFollowers={twitterFollowers} 
+                      />
+                      <ExcelDownloader />
+                      <ExcelUploader 
+                        setLinkedinPosts={handlelinkedinPosts} 
+                        setTwitterArticles={handletwitterArticles} 
+                        setNewsPaperArticles={handlenewsPaperArticles} 
+                        setProjects={handleProjects} 
+                        setPapers={handlePapers} 
+                        setNetZeroIITKStatus={handlenetZeroIITKStatus} 
+                        setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} 
+                        setOutreachActicities={handleoutreachActivities} 
+                        setFunding1={setFunding1} 
+                        setFunding2={setFunding2} 
+                        setFunding3={setFunding3} 
+                        setTalks={setTalks} 
+                        setLinkedinFollowers={setLinkedinFollowers} 
+                        setTwitterFollowers={setTwitterFollowers}
+                      />
+                    </div>
+                  )}
+
               </div>
             </div>
             {/* Loading  */}

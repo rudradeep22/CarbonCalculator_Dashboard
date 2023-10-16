@@ -16,6 +16,10 @@ export default function Signup() {
             password: password
         };
 
+        if( !(email && password)) {
+            alert("All fields are required !!");
+        }
+
         try {
             const res = await fetch(fetchURL, {
                 method: 'POST',
@@ -28,7 +32,11 @@ export default function Signup() {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
-            navigateTo("/");
+            else{
+                alert("Signup Successful")
+                navigateTo("/");
+            }
+
 
         } catch (error) {
             console.error('Error:', error);

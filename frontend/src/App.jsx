@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Routes,
   Route,
@@ -24,11 +24,13 @@ function App() {
     document.querySelector('html').style.scrollBehavior = ''
   }, [location.pathname]); // triggered on route change
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route exact path='/signup' element={<Signup />} />
       </Routes>
     </>

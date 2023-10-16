@@ -92,7 +92,7 @@ app.post("/signup", async (req, res) => {
         console.log(err);
       }
 })
-app.get("/signin", async (req, res) => {
+app.post("/signin", async (req, res) => {
     try{
         const { email, password } = req.body;
         if (!(email && password)) {
@@ -110,7 +110,7 @@ app.get("/signin", async (req, res) => {
             );
         user.token = token;
         return res.status(200).json(user);
-        }
+            }
         return res.status(400).send("Invalid Credentials");
     } catch (err) {
         console.log(err);
