@@ -41,8 +41,8 @@ function Dashboard( {isAuthenticated} ) {
   const [funding2, setFunding2] = useState([]);
   const [funding3, setFunding3] = useState([]);
   const [talks, setTalks] = useState([]);
-  const [linkedinFollowers, setLinkedinFollowers] = useState(0);
-  const [twitterFollowers, setTwitterFollowers] = useState(0);
+  const [linkedinFollowers, setLinkedinFollowers] = useState(null);
+  const [twitterFollowers, setTwitterFollowers] = useState(null);
 
   const handlelinkedinPosts = (newlinkedinPosts) => {
     setLinkedinPosts(newlinkedinPosts);
@@ -129,7 +129,7 @@ useEffect( () => {
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
               </div>
               <div className='flex flex-wrap justify-around gap-3'>
-                {linkedinFollowers && <Followers linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />}
+                <Followers linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />
                 { isAuthenticated || <Link
               to="/login"
               className="bg-green-600 text-xl text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-250 ease-in-out hover:text-2xl hover:bg-green-700"

@@ -4,6 +4,7 @@ const Followers = ( {linkedinFollowers, twitterFollowers}) => {
     return ( 
         <>
         {
+            linkedinFollowers && twitterFollowers && (
         <div className="flex flex-wrap items-center">
             
             <h1 className="text-2xl font-bold mr-10">Followers: </h1>
@@ -22,6 +23,7 @@ const Followers = ( {linkedinFollowers, twitterFollowers}) => {
             <h1 className="text-xl font-bold mr-6">{linkedinFollowers}</h1>
             </a>
         </div>
+            )
         }
         </>
      );

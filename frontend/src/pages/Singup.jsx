@@ -28,8 +28,10 @@ export default function Signup() {
                 },
                 body: JSON.stringify(data)
             });
-
-            if (!res.ok) {
+            if(res.status == 409){
+                alert("User already exists. Please try logging in.");
+            }
+            else if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
             else{
