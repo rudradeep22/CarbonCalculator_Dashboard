@@ -35,8 +35,8 @@ if [ ! -f "backend/.env" ]; then
     echo "TOKEN_KEY=<Anything string>" >> backend/.env
 fi
 
-(cd frontend && npm run dev) &
-(cd backend && npm run dev) &
+(cd frontend && npm i && npm run dev) &
+(cd backend && npm i && npm run dev) &
 
 echo "Press 'q' to terminate background process..."
 
