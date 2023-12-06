@@ -11,6 +11,9 @@ import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
+import Talks from './pages/Talks';
+import Projects from './pages/Projects';
+import Papers from './pages/Papers';
 import Login from './pages/Login_new';
 import Signup from './pages/Singup';
 
@@ -30,6 +33,9 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/talks' element={<Talks />} />
+        <Route exact path='/projects' element={<Projects />} />
+        <Route exact path='/papers' element={<Papers />} />
         <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route exact path='/signup' element={<Signup />} />
       </Routes>

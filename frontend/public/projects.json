@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Project 1",
+      "speaker": "Speaker 1",
+      "date": "2023-01-01",
+      "description": "Description of Project 1"
+    },
+    {
+      "title": "Project 2",
+      "speaker": "Speaker 2",
+      "date": "2023-02-01",
+      "description": "Description of Project 2"
+    },
+    {
+        "title": "Project 3",
+        "speaker": "Speaker 3",
+        "date": "2023-02-02",
+        "description": "Description of Project 3"
+      }
+  ]
+  

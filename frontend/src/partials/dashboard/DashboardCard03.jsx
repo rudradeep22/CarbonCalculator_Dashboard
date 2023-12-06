@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 // import LineChart from '../../charts/LineChart01';
 import Icon from '../../images/icon-01.svg';
 import EditMenu from '../../components/DropdownEditMenu';
@@ -8,10 +8,10 @@ import EditMenu from '../../components/DropdownEditMenu';
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 import BarChart02 from '../../charts/BarChart02';
 
-function DashboardCard03({papers}) {
+function DashboardCard03({subjects, name}) {
 
   let sum=0;
-  papers.forEach(pap => {
+  subjects.forEach(pap => {
     sum += pap;
   });
 
@@ -32,7 +32,7 @@ function DashboardCard03({papers}) {
         //   289, 403, 554, 304, 289, 270, 134,
         //   270, 829, 344, 388, 364,
         // ],
-        data:papers,
+        data:subjects,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.green[500])}, 0.08)`,
         borderColor: tailwindConfig().theme.colors.green[500],
@@ -49,26 +49,27 @@ function DashboardCard03({papers}) {
     ],
   };
   const uniqueKey = JSON.stringify(chartData);
+  let redirectLink = '/'+name;
 
   return (
     <>
-    {papers.length > 0 && 
+    {subjects.length > 0 && 
     <div className="flex flex-col col-span-full hover:scale-105 transition-transform duration-250 sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
           {/* Icon */}
           <img src={Icon} width="32" height="32" alt="Icon 03" />
           {/* Menu button */}
-          <EditMenu align="right" className="relative inline-flex">
-            <li>
-              <Link className="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to="#0">
+          {/* <EditMenu align="right" className="relative inline-flex"> */}
+            {/* <li> */}
+              <Link className="font-bold  text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" to={redirectLink}>
                 View More
               </Link>
-            </li>
-          </EditMenu>
+            {/* </li> */}
+          {/* </EditMenu> */}
         </header>
-        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of papers published</h2>
-        <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total Papers this year</div>
+        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of {name} published</h2>
+        <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total {name} this year</div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{sum}</div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div> */}

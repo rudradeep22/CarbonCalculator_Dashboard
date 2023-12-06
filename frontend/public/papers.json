@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Paper 1",
+      "author": "author 1",
+      "date": "2023-01-01",
+      "description": "Description of Paper 1"
+    },
+    {
+      "title": "Paper 2",
+      "author": "author 2",
+      "date": "2023-02-01",
+      "description": "Description of Paper 2"
+    },
+    {
+        "title": "Paper 3",
+        "author": "author 3",
+        "date": "2023-02-02",
+        "description": "Description of Paper 3"
+      }
+  ]
+  

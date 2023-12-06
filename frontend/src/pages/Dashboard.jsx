@@ -5,7 +5,7 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
 import DashboardCard01 from '../partials/dashboard/DashboardCard01';
-import DashboardCard02 from '../partials/dashboard/DashboardCard02';
+// import DashboardCard02 from '../partials/dashboard/DashboardCard02';
 import DashboardCard03 from '../partials/dashboard/DashboardCard03';
 import DashBoardNewsPaperArticles from '../partials/dashboard/DashBoardNewsPaperArticles';
 import DashBoardNetZeroIITK from '../partials/dashboard/DashBoardNetZeroIITK';
@@ -22,7 +22,7 @@ import Followers from '../partials/dashboard/Followers';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import Loading from '../partials/dashboard/Loading';
 import { BarWave } from "react-cssfx-loading";
-import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
+// import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
 
@@ -136,24 +136,25 @@ useEffect( () => {
                     >
                         Go to Login
                     </Link>}
+                  <ExcelCurrentDownloader 
+                      linkedinPosts={linkedinPosts} 
+                      twitterArticles={twitterArticles} 
+                      newsPaperArticles={newsPaperArticles} 
+                      projects={projects} 
+                      papers={papers} 
+                      netZeroIITKStatus={netZeroIITKStatus} 
+                      netZeroArmyCanttStatus={netZeroArmyCanttStatus} 
+                      outreachActivities={outreachActivities} 
+                      funding1={funding1} 
+                      funding2={funding2} 
+                      funding3={funding3} 
+                      talks={talks} 
+                      linkedinFollowers={linkedinFollowers} 
+                      twitterFollowers={twitterFollowers} 
+                    />
                 {isAuthenticated && (
                     <div className='flex flex-wrap justify-around gap-3'>
-                      <ExcelCurrentDownloader 
-                        linkedinPosts={linkedinPosts} 
-                        twitterArticles={twitterArticles} 
-                        newsPaperArticles={newsPaperArticles} 
-                        projects={projects} 
-                        papers={papers} 
-                        netZeroIITKStatus={netZeroIITKStatus} 
-                        netZeroArmyCanttStatus={netZeroArmyCanttStatus} 
-                        outreachActivities={outreachActivities} 
-                        funding1={funding1} 
-                        funding2={funding2} 
-                        funding3={funding3} 
-                        talks={talks} 
-                        linkedinFollowers={linkedinFollowers} 
-                        twitterFollowers={twitterFollowers} 
-                      />
+                      
                       <ExcelDownloader />
                       <ExcelUploader 
                         setLinkedinPosts={handlelinkedinPosts} 
@@ -185,9 +186,9 @@ useEffect( () => {
             <div className="grid grid-cols-12 gap-6">
               {funding1 && <DashboardCard08 funding1={funding1} funding2={funding2} funding3={funding3}/>}
               {linkedinPosts && newsPaperArticles && <DashBoardCard04 linkedinPosts={linkedinPosts} newsPaperArticles={newsPaperArticles} twitterArticles={twitterArticles}/>}
-              {talks && <DashboardTalks talks={talks} />}
-              {projects && <DashboardCard02 projects={projects} />}
-              {papers && <DashboardCard03 papers={papers} />}        {/* Bar chart */}
+              {talks && <DashboardCard03 subjects={talks} name='talks' />}
+              {projects && <DashboardCard03 subjects={projects} name='projects' />}
+              {papers && <DashboardCard03 subjects={papers} name='papers'/>}        {/* Bar chart */}
               {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
               {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />}
               {outreachActivities && <DashboardCard12 outreachActivities={outreachActivities}/>}
