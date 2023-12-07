@@ -15,6 +15,7 @@ import ExcelUploader from '../utils/ExcelUploader';
 import axios from 'axios';
 import ExcelDownloader from '../utils/ExcelDownloader';
 import ExcelCurrentDownloader from '../utils/ExcelCurrentDownloader';
+import OutreachLink from '../partials/dashboard/OutreachLink';
 
 import DashBoardCard04 from '../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../partials/dashboard/DashboardCard05';
@@ -36,7 +37,6 @@ function Dashboard( {isAuthenticated} ) {
   const [papers, setPapers] = useState([]);
   const [netZeroIITKStatus, setNetZeroIITKStatus] = useState("");
   const [netZeroArmyCanttStatus, setNetZeroArmyCanttStatus] = useState("");
-  const [outreachActivities, setOutreachActicities] = useState("");
   const [funding1, setFunding1] = useState([]);
   const [funding2, setFunding2] = useState([]);
   const [funding3, setFunding3] = useState([]);
@@ -62,9 +62,7 @@ function Dashboard( {isAuthenticated} ) {
   const handlenetZeroArmyCanttStatus = (newNetZeroArmyCanttStatus) => {
     setNetZeroArmyCanttStatus(newNetZeroArmyCanttStatus);
   }
-  const handleoutreachActivities = (newOutreachActivities) => {
-    setOutreachActicities(newOutreachActivities);
-  }
+
   const handletwitterArticles = (twitterArticles) => {
     setTwitterArticles(twitterArticles);
   }
@@ -97,7 +95,6 @@ useEffect( () => {
     setPapers(stats.data[0].papers);
     setNetZeroIITKStatus(stats.data[0].netZeroIITKStatus);
     setNetZeroArmyCanttStatus(stats.data[0].netZeroArmyCanttStatus);
-    setOutreachActicities(stats.data[0].outreachActivities);
     setFunding1(stats.data[0].funding1);
     setFunding2(stats.data[0].funding2);
     setFunding3(stats.data[0].funding3);
@@ -144,7 +141,6 @@ useEffect( () => {
                       papers={papers} 
                       netZeroIITKStatus={netZeroIITKStatus} 
                       netZeroArmyCanttStatus={netZeroArmyCanttStatus} 
-                      outreachActivities={outreachActivities} 
                       funding1={funding1} 
                       funding2={funding2} 
                       funding3={funding3} 
@@ -164,7 +160,6 @@ useEffect( () => {
                         setPapers={handlePapers} 
                         setNetZeroIITKStatus={handlenetZeroIITKStatus} 
                         setNetZeroArmyCanttStatus={handlenetZeroArmyCanttStatus} 
-                        setOutreachActicities={handleoutreachActivities} 
                         setFunding1={setFunding1} 
                         setFunding2={setFunding2} 
                         setFunding3={setFunding3} 
@@ -191,7 +186,7 @@ useEffect( () => {
               {papers && <DashboardCard03 subjects={papers} name='papers'/>}        {/* Bar chart */}
               {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
               {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />}
-              {outreachActivities && <DashboardCard12 outreachActivities={outreachActivities}/>}
+              <OutreachLink />
             </div>
 
           </div>

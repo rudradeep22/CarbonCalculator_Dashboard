@@ -3,7 +3,7 @@ import Excel from 'exceljs';
 
 class ExcelDownload extends React.Component {
   downloadExcel = () => {
-    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers, outreachActivities, netZeroIITKStatus, netZeroArmyCanttStatus, funding1, funding2, funding3, talks, linkedinFollowers, twitterFollowers } = this.props;
+    const { linkedinPosts, twitterArticles, newsPaperArticles, projects, papers,  netZeroIITKStatus, netZeroArmyCanttStatus, funding1, funding2, funding3, talks, linkedinFollowers, twitterFollowers } = this.props;
 
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet('Sheet1');
@@ -15,7 +15,6 @@ class ExcelDownload extends React.Component {
       { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15},
       { header: 'Projects', key: 'projects', width: 15},
       { header: 'Papers', key: 'papers', width: 15},
-      { header: 'Outreach Activities', key: 'outreachActivities', width: 15},
       { header: 'Total Funding', key: 'funding1', width: 15},
       { header: 'Monthly Budget', key: 'funding2', width: 15},
       { header: 'Expenditure', key: 'funding3', width: 15},
@@ -38,7 +37,7 @@ class ExcelDownload extends React.Component {
 
     linkedinPosts.forEach((val, index) => {
       const row = { linkedinPosts: val, twitterArticles: twitterArticles[index], newsPaperArticles: newsPaperArticles[index], 
-        projects: projects[index], papers: papers[index], outreachActivities: outreachActivities[index], 
+        projects: projects[index], papers: papers[index],
         funding1: funding1[index], funding2: funding2[index], funding3: funding3[index], 
         talks: talks[index]};
     
