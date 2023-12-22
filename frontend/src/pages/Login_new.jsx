@@ -85,8 +85,9 @@ export default function Login( {setIsAuthenticated}) {
                         </button>
                     </div>
                 </form>
-
-                <p className="mt-8 text-xs font-light text-center text-gray-700">
+                {/* Uncomment below to access signup */}
+                
+                {/* <p className="mt-8 text-xs font-light text-center text-gray-700">
                     {" "}
                     Don't have an account?{" "}
                     <Link
@@ -95,7 +96,8 @@ export default function Login( {setIsAuthenticated}) {
                     >
                         Signup
                     </Link>
-                </p>
+                </p> */}
+                
             </div>
         </div>
     );

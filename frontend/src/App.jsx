@@ -33,13 +33,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />
         <Route exact path='/outreach' element={<OutreachActivities />} />
         <Route exact path='/talks' element={<Talks />} />
         <Route exact path='/projects' element={<Projects />} />
         <Route exact path='/papers' element={<Papers />} />
         <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route exact path='/signup' element={<Signup />} />
+        <Route path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />
       </Routes>
     </>
   );

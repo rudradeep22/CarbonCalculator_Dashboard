@@ -131,7 +131,7 @@ useEffect( () => {
               to="/login"
               className="bg-green-600 text-xl text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-250 ease-in-out hover:text-2xl hover:bg-green-700"
                     >
-                        Go to Login
+                        Login as admin
                     </Link>}
                   <ExcelCurrentDownloader 
                       linkedinPosts={linkedinPosts} 
