@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from '../partials/Header';
 import Sidebar from '../partials/Sidebar';
 
-const Papers = () => {
+const Papers = ({isAuthenticated}) => {
   const [papersData, setpapersData] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -39,6 +39,8 @@ const Papers = () => {
                   className="w-64 h-40 object-cover rounded-lg"
                 />
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
+                {isAuthenticated && (
+                      <h4>Unique id: {paper._id}</h4>)}
                   <h2 className="text-xl font-semibold text-slate-800">{paper.title}</h2>
                   <p className="text-gray-600">Researcher: {paper.speaker}</p>
                   <p className="text-gray-600">Date: {paper.date}</p>

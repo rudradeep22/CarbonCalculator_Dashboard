@@ -5,6 +5,7 @@ const postUrlTalk = import.meta.env.VITE_URL + "/api/saveTalk";
 const postUrlProject = import.meta.env.VITE_URL + "/api/saveProject";
 const postUrlPaper = import.meta.env.VITE_URL + "/api/savePaper";
 const postUrlActivity = import.meta.env.VITE_URL + "/api/saveActivity";
+const deleteUrl = import.meta.env.VITE_URL + "/api/delete";
 
 const UpdateForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const UpdateForm = () => {
     date: '',
     speaker: '',
     month: '',
+    id:'',
   });
 
   const [selectedTab, setSelectedTab] = useState('Talks');
@@ -62,9 +64,32 @@ const UpdateForm = () => {
         date: '',
         speaker: '',
         month: '',
+        id:'',
       });
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleDeleteSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const deleteId = formData.id;
+      let response;
+      response = await axios.post(deleteUrl, { id: deleteId, tab:selectedTab});
+      console.log(response.data);
+
+      setFormData({
+        title: '',
+        description: '',
+        date: '',
+        speaker: '',
+        month: '',
+        id:'',
+      });
+    }catch(err){
+      console.log(err);
     }
   };
 
@@ -138,6 +163,21 @@ const UpdateForm = () => {
         )}
         <button type="submit" className="bg-green-500 text-white p-2 rounded-md">
           Submit
+        </button>
+      </form>
+      <form onSubmit={handleDeleteSubmit} className="space-y-4 mt-4">
+      <div>
+          <label className="block text-sm font-medium text-gray-700">Unique Id</label>
+          <input
+            type="text"
+            name="id"
+            value={formData.id}
+            onChange={handleInputChange}
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+          />
+        </div>
+        <button type="submit" className="bg-green-500 text-white p-2 rounded-md">
+          Delete 
         </button>
       </form>
     </div>

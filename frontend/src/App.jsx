@@ -34,11 +34,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path='/outreach' element={<Activities />} />
+        <Route exact path='/outreach' element={<Activities isAuthenticated={isAuthenticated} />} />
         <Route exact path='/update' element={<UpdateForm />} />
-        <Route exact path='/talks' element={<Talks />} />
-        <Route exact path='/projects' element={<Projects />} />
-        <Route exact path='/papers' element={<Papers />} />
+        <Route exact path='/talks' element={<Talks isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/projects' element={<Projects isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/papers' element={<Papers isAuthenticated={isAuthenticated} />} />
         <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route exact path='/signup' element={<Signup />} />
         <Route path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />

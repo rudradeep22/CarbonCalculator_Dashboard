@@ -134,7 +134,6 @@ useEffect( () => {
                     >
                         Login as admin
                     </Link>}
-                    <UpdatePages />
                   <ExcelCurrentDownloader 
                       linkedinPosts={linkedinPosts} 
                       twitterArticles={twitterArticles} 
@@ -152,7 +151,7 @@ useEffect( () => {
                     />
                 {isAuthenticated && (
                     <div className='flex flex-wrap justify-around gap-3'>
-                      
+                      <UpdatePages />
                       <ExcelDownloader />
                       <ExcelUploader 
                         setLinkedinPosts={handlelinkedinPosts} 

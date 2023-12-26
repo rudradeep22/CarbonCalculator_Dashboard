@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from '../partials/Header';
 import Sidebar from '../partials/Sidebar';
 
-const Activities = () => {
+const Activities = ({isAuthenticated}) => {
   const [activitiesData, setactivitiesData] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -39,6 +39,8 @@ const Activities = () => {
                   className="w-64 h-40 object-cover rounded-lg"
                 />
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
+                {isAuthenticated && (
+                      <h4>Unique id: {activity._id}</h4>)}
                   <h2 className="text-xl font-semibold text-slate-800">{activity.title}</h2>
                   <p className="text-gray-600">Date: {activity.date}</p>
                   <p className="text-gray-700">{activity.description}</p>

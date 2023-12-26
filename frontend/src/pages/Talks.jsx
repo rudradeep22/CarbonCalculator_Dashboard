@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from '../partials/Header';
 import Sidebar from '../partials/Sidebar';
 
-const Talks = () => {
+const Talks = ({isAuthenticated}) => {
   const [talksData, setTalksData] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const Talks = () => {
 
     fetchTalks();
   }, []);
-
+console.log(isAuthenticated);
   return (
     <div className="flex h-screen overflow-hidden font-roboto">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -39,6 +39,8 @@ const Talks = () => {
                   className="w-64 h-40 object-cover rounded-lg"
                 />
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
+                {isAuthenticated && (
+                      <h4>Unique id: {talk._id}</h4>)}
                   <h2 className="text-xl font-semibold text-slate-800">{talk.title}</h2>
                   <p className="text-gray-600">Speaker: {talk.speaker}</p>
                   <p className="text-gray-600">Date: {talk.date}</p>

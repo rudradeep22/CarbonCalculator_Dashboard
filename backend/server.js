@@ -40,6 +40,32 @@ app.get("/api/getStats", (req, res)=>{
     .catch(err => res.json(err))
 })
 
+app.post('/api/delete', async(req, res) => {
+  try {
+    const deleteId = req.body.id;
+    const selectedTab = req.body.tab;
+    let deletedTalk;
+    if(selectedTab === 'Talks')
+      deletedTalk = await Talk.findByIdAndDelete(deleteId);
+    else if(selectedTab === 'Projects')
+      deletedTalk = await Project.findByIdAndDelete(deleteId);
+    else if(selectedTab === 'Papers')
+      deletedTalk = await Paper.findByIdAndDelete(deleteId);
+    else if(selectedTab === 'Activities')
+      deletedTalk = await Activity.findByIdAndDelete(deleteId);
+
+    if (!deletedTalk) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+
+    res.status(200).json({ message: 'Deleted successfully' });
+  } 
+  catch(err){
+    console.log(err);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 app.get('/api/getActivities', async (req, res) => {
     try {
       const activities = await Activity.find(); // Fetch all talks from the MongoDB collection
