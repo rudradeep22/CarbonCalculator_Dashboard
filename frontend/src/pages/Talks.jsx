@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../partials/Header';
 import Sidebar from '../partials/Sidebar';
+import { talksInfo, updateTalksInfo } from '../utils/data';
 
 const Talks = () => {
   const [talksData, setTalksData] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch data from the JSON file
-    fetch('./talks.json') // Update the path to your JSON file
-      .then(response => response.json())
-      .then(data => setTalksData(data))
-      .catch(error => console.error('Error fetching talks data:', error));
+    setTalksData(talksInfo);
   }, []);
 
   return (

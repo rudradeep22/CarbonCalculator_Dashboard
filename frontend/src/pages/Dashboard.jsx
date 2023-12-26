@@ -23,6 +23,7 @@ import Followers from '../partials/dashboard/Followers';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 import Loading from '../partials/dashboard/Loading';
 import { BarWave } from "react-cssfx-loading";
+import UpdatePages from '../partials/dashboard/UpdatePages';
 // import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
@@ -133,6 +134,7 @@ useEffect( () => {
                     >
                         Login as admin
                     </Link>}
+                    <UpdatePages />
                   <ExcelCurrentDownloader 
                       linkedinPosts={linkedinPosts} 
                       twitterArticles={twitterArticles} 

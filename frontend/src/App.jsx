@@ -17,6 +17,7 @@ import Projects from './pages/Projects';
 import Papers from './pages/Papers';
 import Login from './pages/Login_new';
 import Signup from './pages/Singup';
+import UpdateForm from './utils/UpdateForm';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
     <>
       <Routes>
         <Route exact path='/outreach' element={<OutreachActivities />} />
+        <Route exact path='/update' element={<UpdateForm />} />
         <Route exact path='/talks' element={<Talks />} />
         <Route exact path='/projects' element={<Projects />} />
         <Route exact path='/papers' element={<Papers />} />
