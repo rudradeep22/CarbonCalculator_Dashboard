@@ -11,7 +11,7 @@ import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
-import OutreachActivities from './pages/Outreach';
+import Activities from './pages/Activity';
 import Talks from './pages/Talks';
 import Projects from './pages/Projects';
 import Papers from './pages/Papers';
@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path='/outreach' element={<OutreachActivities />} />
+        <Route exact path='/outreach' element={<Activities />} />
         <Route exact path='/update' element={<UpdateForm />} />
         <Route exact path='/talks' element={<Talks />} />
         <Route exact path='/projects' element={<Projects />} />

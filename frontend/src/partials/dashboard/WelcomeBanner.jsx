@@ -24,7 +24,7 @@ function WelcomeBanner() {
           <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">
             {getGreeting()}👋
           </h1>
-        <p className="dark:text-slate-200 text-2xl md:text-3xl">  Here is what’s happening with our projects today</p>
+        <p className="dark:text-slate-200 text-2xl md:text-3xl">  Here is what’s happening today</p>
         {/* <img src={Icon}alt="Icon" className='w-16 b-6'/> */}
       </div>
     </div>

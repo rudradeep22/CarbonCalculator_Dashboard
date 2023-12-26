@@ -23,6 +23,10 @@ mongoose.connect(db_url, params)
 
 const User = require("./models/user");
 const Stats = require("./models/stats");
+const Talk = require("./models/talks");
+const Project = require("./models/projects");
+const Paper = require("./models/papers");
+const Activity = require("./models/activity");
 Stats.createIndexes();
 
 const app = express();
@@ -35,6 +39,90 @@ app.get("/api/getStats", (req, res)=>{
     .then(stats => res.json(stats))
     .catch(err => res.json(err))
 })
+
+app.get('/api/getActivities', async (req, res) => {
+    try {
+      const activities = await Activity.find(); // Fetch all talks from the MongoDB collection
+      res.status(200).json(activities);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.post('/api/saveActivity', async (req, res) => {
+    try {
+      const newActivity = new Activity(req.body);
+      await newActivity.save();
+      res.status(200).json({ message: 'Activity saved successfully!' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+app.get('/api/getPapers', async (req, res) => {
+    try {
+      const papers = await Paper.find(); // Fetch all talks from the MongoDB collection
+      res.status(200).json(papers);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.post('/api/savePaper', async (req, res) => {
+    try {
+      const newPaper = new Paper(req.body);
+      await newPaper.save();
+      res.status(200).json({ message: 'Paper saved successfully!' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+app.get('/api/getTalks', async (req, res) => {
+    try {
+      const talks = await Talk.find(); // Fetch all talks from the MongoDB collection
+      res.status(200).json(talks);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.post('/api/saveTalk', async (req, res) => {
+    try {
+      const newTalk = new Talk(req.body);
+      await newTalk.save();
+      res.status(200).json({ message: 'Talk saved successfully!' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+app.get('/api/getProjects', async (req, res) => {
+    try {
+      const projects = await Project.find(); // Fetch all talks from the MongoDB collection
+      res.status(200).json(projects);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.post('/api/saveProject', async (req, res) => {
+    try {
+      const newProject = new Project(req.body);
+      await newProject.save();
+      res.status(200).json({ message: 'Project saved successfully!' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 app.post("/api/register", async (req, resp) => {
     try {

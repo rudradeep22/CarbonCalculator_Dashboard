@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import{ talksInfo, updateTalksInfo } from './data'
+import axios from 'axios';
+
+const postUrlTalk = import.meta.env.VITE_URL + "/api/saveTalk";
+const postUrlProject = import.meta.env.VITE_URL + "/api/saveProject";
+const postUrlPaper = import.meta.env.VITE_URL + "/api/savePaper";
+const postUrlActivity = import.meta.env.VITE_URL + "/api/saveActivity";
 
 const UpdateForm = () => {
   const [formData, setFormData] = useState({
@@ -24,30 +29,43 @@ const UpdateForm = () => {
     setSelectedTab(tab);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-  
-    // Depending on the selected tab, update the corresponding talksInfo data
-    const newTalk = {
-      title: formData.title,
-      description: formData.description,
-      date: formData.date,
-      ...(selectedTab !== 'Activities' && { speaker: formData.speaker }),
-    };
-    const selectedMonth = formData.month;
-    // Find the month in talksInfo
-    const monthIndex = talksInfo.findIndex((month) => month.month === selectedMonth);
 
-    updateTalksInfo(newTalk, selectedMonth);
-    // Log the updated talksInfo
-    console.log(talksInfo);
+    try {
+      // Depending on the selected tab, update the corresponding talksInfo data
+      const newInfo = {
+        title: formData.title,
+        description: formData.description,
+        date: formData.date,
+        ...(selectedTab !== 'Activities' && { speaker: formData.speaker }),
+        month: formData.month,
+      };
+
+      // Make API call to save data
+      let response;
+      if ( selectedTab === 'Talks')
+        response = await axios.post(postUrlTalk, newInfo);
+      else if (selectedTab === 'Projects')
+        response = await axios.post(postUrlProject, newInfo);
+      else if (selectedTab === 'Papers')
+        response = await axios.post(postUrlPaper, newInfo);
+      else if (selectedTab === 'Activities')
+        response = await axios.post(postUrlActivity, newInfo);
+
+      console.log(response.data);
+      console.log(selectedTab);
+      // Reset form data
       setFormData({
-      title: '',
-      description: '',
-      date: '',
-      speaker: '',
-      month: '',
-    });
+        title: '',
+        description: '',
+        date: '',
+        speaker: '',
+        month: '',
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
