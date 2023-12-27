@@ -41,10 +41,10 @@ console.log(isAuthenticated);
             <div className="max-w-2xl mb-6 ml-6 mr-6">
               {isAuthenticated && (
                 <h4>Unique id: {talk._id}</h4>)}
-              <h2 className="text-xl font-semibold text-slate-800">{talk.title}</h2>
-              <p className="text-gray-600">Speaker: {talk.speaker}</p>
-              <p className="text-gray-600">Date: {talk.date}</p>
-              <p className="text-gray-700">{talk.description}</p>
+              <h2 className="text-xl font-semibold text-slate-800 my-2">{talk.title}</h2>
+              <p className="text-gray-600 my-1">Speaker: {talk.speaker}</p>
+              <p className="text-gray-600 my-1">Date: {talk.date}</p>
+              <p className="text-gray-700 my-1">{talk.description}</p>
             </div>
           </div>
         </div>

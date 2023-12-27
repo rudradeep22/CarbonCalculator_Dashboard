@@ -41,10 +41,10 @@ const Papers = ({isAuthenticated}) => {
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
                 {isAuthenticated && (
                       <h4>Unique id: {paper._id}</h4>)}
-                  <h2 className="text-xl font-semibold text-slate-800">{paper.title}</h2>
-                  <p className="text-gray-600">Researcher: {paper.speaker}</p>
-                  <p className="text-gray-600">Date: {paper.date}</p>
-                  <p className="text-gray-700">{paper.description}</p>
+                  <h2 className="text-xl font-semibold text-slate-800 my-2">{paper.title}</h2>
+                  <p className="text-gray-600 my-1">Researcher: {paper.speaker}</p>
+                  <p className="text-gray-600 my-1">Date: {paper.date}</p>
+                  <p className="text-gray-700 my-1">{paper.description}</p>
                 </div>
               </div>
             </div>

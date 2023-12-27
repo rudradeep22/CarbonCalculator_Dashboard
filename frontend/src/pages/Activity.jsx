@@ -41,9 +41,9 @@ const Activities = ({isAuthenticated}) => {
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
                 {isAuthenticated && (
                       <h4>Unique id: {activity._id}</h4>)}
-                  <h2 className="text-xl font-semibold text-slate-800">{activity.title}</h2>
-                  <p className="text-gray-600">Date: {activity.date}</p>
-                  <p className="text-gray-700">{activity.description}</p>
+                  <h2 className="text-xl font-semibold text-slate-800 my-2">{activity.title}</h2>
+                  <p className="text-gray-600 my-1">Date: {activity.date}</p>
+                  <p className="text-gray-700 my-1">{activity.description}</p>
                 </div>
               </div>
             </div>

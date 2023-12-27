@@ -41,10 +41,10 @@ const Projects = ({isAuthenticated}) => {
                 <div className="max-w-2xl mb-30 ml-6 mr-6">
                 {isAuthenticated && (
                       <h4>Unique id: {project._id}</h4>)}
-                  <h2 className="text-xl font-semibold text-slate-800">{project.title}</h2>
-                  <p className="text-gray-600">Mentor: {project.speaker}</p>
-                  <p className="text-gray-600">Date: {project.date}</p>
-                  <p className="text-gray-700">{project.description}</p>
+                  <h2 className="text-xl font-semibold text-slate-800 my-2">{project.title}</h2>
+                  <p className="text-gray-600 my-1">Mentor: {project.speaker}</p>
+                  <p className="text-gray-600 my-1">Date: {project.date}</p>
+                  <p className="text-gray-700 my-1">{project.description}</p>
                 </div>
               </div>
             </div>
