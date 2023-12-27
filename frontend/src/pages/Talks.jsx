@@ -33,11 +33,11 @@ console.log(isAuthenticated);
       <div key={idx} className="mb-8 min-w-1/4"> {/* Added minimum width */}
         <div className="mx-10 gap-20">
           <div key={idx} className="flex flex-wrap bg-white p-6 rounded-lg shadow-md">
-            <img
+            {/* <img
               src={`https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc=`} 
               alt="Talk Thumbnail"
               className="w-64 h-40 object-cover rounded-lg"
-            />
+            /> */}
             <div className="max-w-2xl mb-6 ml-6 mr-6">
               {isAuthenticated && (
                 <h4>Unique id: {talk._id}</h4>)}
