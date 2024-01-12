@@ -27,6 +27,7 @@ import UpdatePages from '../partials/dashboard/UpdatePages';
 // import DashboardTalks from '../partials/dashboard/DashboardCardTalks';
 
 const getUrl = import.meta.env.VITE_URL + "/api/getStats";
+// const getUrl = "https://carbon-calculator-dashboard-xwnq.onrender.com" + "/api/getStats";
 
 function Dashboard( {isAuthenticated} ) {
 
@@ -129,7 +130,7 @@ useEffect( () => {
               <div className='flex flex-wrap justify-around gap-3'>
                 <Followers linkedinFollowers={linkedinFollowers} twitterFollowers={twitterFollowers} />
                 { isAuthenticated || <Link
-              to="/login"
+              to="/ckc/carbon-calculator-dashboard/login"
               className="bg-green-600 text-xl text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-250 ease-in-out hover:text-2xl hover:bg-green-700"
                     >
                         Login as admin
@@ -153,7 +154,10 @@ useEffect( () => {
                     <div className='flex flex-wrap justify-around gap-3'>
                       <UpdatePages />
                       <ExcelDownloader />
-                      <ExcelUploader 
+                      
+                    </div>
+                  )}
+                  <ExcelUploader 
                         setLinkedinPosts={handlelinkedinPosts} 
                         setTwitterArticles={handletwitterArticles} 
                         setNewsPaperArticles={handlenewsPaperArticles} 
@@ -168,9 +172,6 @@ useEffect( () => {
                         setLinkedinFollowers={setLinkedinFollowers} 
                         setTwitterFollowers={setTwitterFollowers}
                       />
-                    </div>
-                  )}
-
               </div>
             </div>
             {/* Loading  */}

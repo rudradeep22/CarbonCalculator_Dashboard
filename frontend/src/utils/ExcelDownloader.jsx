@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const ExcelDownloader = () => {
 
     const handleDownload = () => {
-        const url = '/template.xlsx';
+        const url = '/ckc/carbon-calculator-dashboard/template.xlsx';
         const a = document.createElement('a');
         a.href = url;
         a.download = 'template.xlsx';

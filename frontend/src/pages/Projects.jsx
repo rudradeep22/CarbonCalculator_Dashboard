@@ -8,6 +8,7 @@ const Projects = ({isAuthenticated}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchurl = import.meta.env.VITE_URL + '/api/getProjects'
+  // const fetchurl = "https://carbon-calculator-dashboard-xwnq.onrender.com" + "/api/getProjects"
 
   useEffect(() => {
     // Make an API call to fetch projects from MongoDB

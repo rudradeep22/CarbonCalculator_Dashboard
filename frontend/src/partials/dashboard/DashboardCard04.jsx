@@ -13,13 +13,16 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
     // '09-01-2023', '10-01-2023', '11-01-2023',
     // '12-01-2023'
   ]
+  let linkedinPostsInt = linkedinPosts.map(post => parseInt(post, 10));
+  let newsPaperArticlesInt = newsPaperArticles.map(elem => parseInt(elem, 10));
+  let twitterArticlesInt = twitterArticles.map(elem => parseInt(elem, 10));
   const chartData = {
     labels: labels,
     datasets: [
       // dark green bars
       {
         label: 'Linkedin Posts',
-        data: linkedinPosts,
+        data: linkedinPostsInt,
         backgroundColor: tailwindConfig().theme.colors.green[600],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[700],
         barPercentage: 0.66,
@@ -28,7 +31,7 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
       // green bars
       {
         label: 'Newspaper Articles',
-        data: newsPaperArticles,
+        data: newsPaperArticlesInt,
         backgroundColor: tailwindConfig().theme.colors.green[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
         barPercentage: 0.66,
@@ -36,7 +39,7 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
       },
       {
         label: 'Twitter Articles',
-        data: twitterArticles,
+        data: twitterArticlesInt,
         backgroundColor: tailwindConfig().theme.colors.red[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.red[450],
         barPercentage: 0.66,

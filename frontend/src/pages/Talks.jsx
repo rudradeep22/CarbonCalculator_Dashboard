@@ -8,6 +8,7 @@ const Talks = ({isAuthenticated}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchurl = import.meta.env.VITE_URL + '/api/getTalks'
+  // const fetchurl = 'https://carbon-calculator-dashboard-xwnq.onrender.com' + '/api/getTalks'
 
   useEffect(() => {
     // Make an API call to fetch talks from MongoDB
@@ -34,7 +35,7 @@ console.log(isAuthenticated);
         <div className="mx-10 gap-20">
           <div key={idx} className="flex flex-wrap bg-white p-6 rounded-lg shadow-md">
             {/* <img
-              src={`https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc=`} 
+              src={`https://drive.google.com/uc?id=1In91Nsm4xKNNQbPkBFtNOCbwpltCTyRh`} 
               alt="Talk Thumbnail"
               className="w-64 h-40 object-cover rounded-lg"
             /> */}

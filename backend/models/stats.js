@@ -6,23 +6,23 @@ const StatsSchema = new mongoose.Schema({
         required:false
     },
     linkedinPosts: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     twitterArticles: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     newsPaperArticles: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     projects: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     papers: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     netZeroIITKStatus: {
@@ -38,19 +38,19 @@ const StatsSchema = new mongoose.Schema({
         required: false,
     },
     funding1: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     funding2: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     funding3: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     talks: {
-        type:[Number],
+        type:[String],
         required: false,
     },
     linkedinFollowers: {

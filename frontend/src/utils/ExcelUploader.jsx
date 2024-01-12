@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Excel from 'exceljs';
 
 const fetchURL = import.meta.env.VITE_URL + "/api/register";
+// const fetchURL = "https://carbon-calculator-dashboard-xwnq.onrender.com" + "/api/register";
 console.log(fetchURL);
 const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticles,  setProjects, setPapers, setNetZeroIITKStatus, setNetZeroArmyCanttStatus,  setFunding1, setFunding2, setFunding3, setTalks, setLinkedinFollowers, setTwitterFollowers}) => {
     const data_from_excel = [];

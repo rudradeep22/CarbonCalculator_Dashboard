@@ -34,14 +34,14 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path='/outreach' element={<Activities isAuthenticated={isAuthenticated} />} />
-        <Route exact path='/update' element={<UpdateForm />} />
-        <Route exact path='/talks' element={<Talks isAuthenticated={isAuthenticated} />} />
-        <Route exact path='/projects' element={<Projects isAuthenticated={isAuthenticated} />} />
-        <Route exact path='/papers' element={<Papers isAuthenticated={isAuthenticated} />} />
-        <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route exact path='/signup' element={<Signup />} />
-        <Route path="/" element={<Dashboard isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/outreach' element={<Activities isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/update' element={<UpdateForm />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/talks' element={<Talks isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/projects' element={<Projects isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/papers' element={<Papers isAuthenticated={isAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route exact path='/ckc/carbon-calculator-dashboard/signup' element={<Signup />} />
+        <Route path="/ckc/carbon-calculator-dashboard" element={<Dashboard isAuthenticated={isAuthenticated} />} />
       </Routes>
     </>
   );

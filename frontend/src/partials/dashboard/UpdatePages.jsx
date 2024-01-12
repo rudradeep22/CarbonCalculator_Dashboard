@@ -4,7 +4,7 @@ const UpdatePages = () => {
 
     return (
     <div>
-        <Link to={'/update'} >
+        <Link to={'/ckc/carbon-calculator-dashboard/update'} >
             <button className='bg-green-600 text-xl text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-2xl hover:bg-green-700'>
                 Update Pages
             </button>

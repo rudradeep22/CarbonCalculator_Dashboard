@@ -10,6 +10,7 @@ export default function Login( {setIsAuthenticated}) {
     const navigateTo = useNavigate();
 
     const getUrl = import.meta.env.VITE_URL + "/signin";
+    // const getUrl = "https://carbon-calculator-dashboard-xwnq.onrender.com" + "/signin";
 
     const handelSignin = async (e) => {
         e.preventDefault();
@@ -35,7 +36,7 @@ export default function Login( {setIsAuthenticated}) {
             }
             else if(res.status == 200){
                 setIsAuthenticated(true);
-                navigateTo("/");
+                navigateTo("/ckc/carbon-calculator-dashboard");
             }
         } catch (err) {
             console.log("Error: ",err);
@@ -91,7 +92,7 @@ export default function Login( {setIsAuthenticated}) {
                     {" "}
                     Don't have an account?{" "}
                     <Link
-                        to="/signup"
+                        to="/ckc/carbon-calculator-dashboard/signup"
                         className='text-lg text-green-700'
                     >
                         Signup
