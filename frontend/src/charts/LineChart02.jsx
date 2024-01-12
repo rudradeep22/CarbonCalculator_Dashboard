@@ -3,7 +3,7 @@ import { useThemeProvider } from '../utils/ThemeContext';
 
 import { chartColors } from './ChartjsConfig';
 import {
-  Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,
+  Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip, CategoryScale
 } from 'chart.js';
 import 'chartjs-adapter-moment';
 
@@ -51,14 +51,7 @@ function LineChart02({
             },
           },
           x: {
-            type: 'time',
-            time: {
-              parser: 'MM-DD-YYYY',
-              unit: 'month',
-              displayFormats: {
-                month: 'MMM YY',
-              },
-            },
+            type: 'category',
             border: {
               display: false,
             },

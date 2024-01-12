@@ -5,39 +5,37 @@ import LineChart from '../../charts/LineChart02';
 import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard08( {funding1, funding2, funding3}) {
+  let fundingNumbers = [];
+  let labels = [];
+  funding1.forEach(pap => {
+    // Check if pap exists and is a string
+    if (pap && typeof pap === 'string') {
+      // Extract the number outside <>
+      const numberMatch = pap.match(/<[^>]+>(\d+)/);
 
+      // Check if a number is found
+      if (numberMatch && numberMatch[1]) {
+        const papNumber = parseInt(numberMatch[1], 10);
+        fundingNumbers.push(papNumber);
+      }
+
+      // Extract the text inside <>
+      const textInsideBrackets = pap.match(/<([^>]+)>/);
+
+      // Check if text inside <> is found
+      if (textInsideBrackets && textInsideBrackets[1]) {
+        const labelText = textInsideBrackets[1];
+        labels.push(labelText);
+      }
+    }
+  });
   const chartData = {
-    labels: [
-      '01-01-2021',
-      '02-01-2021',
-      '03-01-2021',
-      '04-01-2021',
-      '05-01-2021',
-      '06-01-2021',
-      '07-01-2021',
-      '08-01-2021',
-      '09-01-2021',
-      '10-01-2021',
-      '11-01-2021',
-      '12-01-2021',
-      '01-01-2022',
-      '02-01-2022',
-      '03-01-2022',
-      '04-01-2022',
-      '05-01-2022',
-      '06-01-2022',
-      '07-01-2022',
-      '08-01-2022',
-      '09-01-2022',
-      '10-01-2022',
-      '11-01-2022',
-      '12-01-2022',
-    ],
+    labels: labels,
     datasets: [
       // Indigo line
       {
         label: 'Total funding',
-        data: funding1,
+        data: fundingNumbers,
         borderColor: tailwindConfig().theme.colors.red[500],
         fill: false,
         borderWidth: 2,

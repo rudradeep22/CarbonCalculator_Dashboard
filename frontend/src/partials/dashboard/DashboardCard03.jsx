@@ -41,8 +41,8 @@ function DashboardCard03({subjects, name}) {
     }
   });
 
-  console.log(extractedNumbers);
-  console.log(labels);
+  // console.log(extractedNumbers);
+  // console.log(labels);
   const chartData = {
     // labels: [
     //   '2012', '2013',

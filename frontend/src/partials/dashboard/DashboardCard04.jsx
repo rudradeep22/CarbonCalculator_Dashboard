@@ -5,17 +5,43 @@ import BarChart from '../../charts/BarChart01';
 import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) {
+  let linkedinPostsInt = []
+  let labels = []
+  linkedinPosts.forEach(pap => {
+    // Check if pap exists and is a string
+    if (pap && typeof pap === 'string') {
+      // Extract the number outside <>
+      const numberMatch = pap.match(/<[^>]+>(\d+)/);
 
-  let labels = [
-    '01-01-2023', '02-01-2023',
-    '03-01-2023', '04-01-2023', '05-01-2023', '06-01-2023'
-    // '07-01-2023', '08-01-2023',
-    // '09-01-2023', '10-01-2023', '11-01-2023',
-    // '12-01-2023'
-  ]
-  let linkedinPostsInt = linkedinPosts.map(post => parseInt(post, 10));
-  let newsPaperArticlesInt = newsPaperArticles.map(elem => parseInt(elem, 10));
-  let twitterArticlesInt = twitterArticles.map(elem => parseInt(elem, 10));
+      // Check if a number is found
+      if (numberMatch && numberMatch[1]) {
+        const papNumber = parseInt(numberMatch[1], 10);
+        linkedinPostsInt.push(papNumber);
+      }
+
+      // Extract the text inside <>
+      const textInsideBrackets = pap.match(/<([^>]+)>/);
+
+      // Check if text inside <> is found
+      if (textInsideBrackets && textInsideBrackets[1]) {
+        const labelText = textInsideBrackets[1];
+        labels.push(labelText);
+      }
+    }
+  });
+  let twitterArticlesInt = [];
+  let newsPaperArticlesInt = [];
+  newsPaperArticles.forEach(elem => {
+    if(elem){
+      newsPaperArticlesInt.push(parseInt(elem, 10));
+    }
+  })
+  twitterArticles.forEach(elem => {
+    if(elem){
+      twitterArticlesInt.push(parseInt(elem, 10));
+    }
+  })
+
   const chartData = {
     labels: labels,
     datasets: [
