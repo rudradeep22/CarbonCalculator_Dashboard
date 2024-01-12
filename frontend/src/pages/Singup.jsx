@@ -38,7 +38,7 @@ export default function Signup() {
             }
             else{
                 alert("Signup Successful")
-                navigateTo("/");
+                navigateTo("/ckc/carbon-calculator-dashboard/login");
             }
 
 

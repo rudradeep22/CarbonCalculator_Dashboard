@@ -154,10 +154,7 @@ useEffect( () => {
                     <div className='flex flex-wrap justify-around gap-3'>
                       <UpdatePages />
                       <ExcelDownloader />
-                      
-                    </div>
-                  )}
-                  <ExcelUploader 
+                      <ExcelUploader 
                         setLinkedinPosts={handlelinkedinPosts} 
                         setTwitterArticles={handletwitterArticles} 
                         setNewsPaperArticles={handlenewsPaperArticles} 
@@ -172,6 +169,8 @@ useEffect( () => {
                         setLinkedinFollowers={setLinkedinFollowers} 
                         setTwitterFollowers={setTwitterFollowers}
                       />
+                    </div>
+                  )}
               </div>
             </div>
             {/* Loading  */}
