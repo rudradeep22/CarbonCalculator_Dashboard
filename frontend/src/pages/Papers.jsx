@@ -46,6 +46,9 @@ const Papers = ({isAuthenticated}) => {
                   <p className="text-gray-600 my-1">Researcher: {paper.speaker}</p>
                   <p className="text-gray-600 my-1">Date: {paper.date}</p>
                   <p className="text-gray-700 my-1">{paper.description}</p>
+                  <a href={paper.link} className="font-bold text-xl text-slate-500 hover:text-green-700 cursor-pointer">
+                    See More
+                  </a>
                 </div>
               </div>
             </div>

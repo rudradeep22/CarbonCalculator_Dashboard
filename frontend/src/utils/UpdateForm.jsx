@@ -13,7 +13,7 @@ const UpdateForm = () => {
     description: '',
     date: '',
     speaker: '',
-    month: '',
+    link: '',
     id:'',
   });
 
@@ -41,7 +41,7 @@ const UpdateForm = () => {
         description: formData.description,
         date: formData.date,
         ...(selectedTab !== 'Activities' && { speaker: formData.speaker }),
-        month: formData.month,
+        link: formData.link,
       };
 
       // Make API call to save data
@@ -63,7 +63,7 @@ const UpdateForm = () => {
         description: '',
         date: '',
         speaker: '',
-        month: '',
+        link: '',
         id:'',
       });
     } catch (error) {
@@ -85,7 +85,7 @@ const UpdateForm = () => {
         description: '',
         date: '',
         speaker: '',
-        month: '',
+        link: '',
         id:'',
       });
     }catch(err){
@@ -111,11 +111,11 @@ const UpdateForm = () => {
 
       <form onSubmit={handleFormSubmit} className="space-y-4 mt-4">
       <div>
-          <label className="block text-sm font-medium text-gray-700">Month</label>
+          <label className="block text-sm font-medium text-gray-700">Link</label>
           <input
             type="text"
-            name="month"
-            value={formData.month}
+            name="link"
+            value={formData.link}
             onChange={handleInputChange}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />

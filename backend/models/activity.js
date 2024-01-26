@@ -4,7 +4,7 @@ const ActivitySchema = new mongoose.Schema({
     title: String,
     description: String,
     date: String,
-    month: String,
+    link: String,
 });
 
 module.exports = mongoose.model("activities", ActivitySchema);

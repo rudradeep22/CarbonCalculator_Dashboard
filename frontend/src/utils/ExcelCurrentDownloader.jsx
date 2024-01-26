@@ -63,7 +63,7 @@ class ExcelDownload extends React.Component {
 
   render() {
     return (
-      <button onClick={this.downloadExcel} className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700'>
+      <button onClick={this.downloadExcel} className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:bg-green-700'>
         Download Current Data
       </button>
     );

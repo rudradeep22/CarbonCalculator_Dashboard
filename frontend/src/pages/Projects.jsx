@@ -46,6 +46,9 @@ const Projects = ({isAuthenticated}) => {
                   <p className="text-gray-600 my-1">Mentor: {project.speaker}</p>
                   <p className="text-gray-600 my-1">Date: {project.date}</p>
                   <p className="text-gray-700 my-1">{project.description}</p>
+                  <a href={project.link} className="font-bold text-xl text-slate-500 hover:text-green-700 cursor-pointer">
+                    See More
+                  </a>
                 </div>
               </div>
             </div>

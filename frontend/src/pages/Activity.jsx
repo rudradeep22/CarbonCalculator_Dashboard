@@ -45,6 +45,9 @@ const Activities = ({isAuthenticated}) => {
                   <h2 className="text-xl font-semibold text-slate-800 my-2">{activity.title}</h2>
                   <p className="text-gray-600 my-1">Date: {activity.date}</p>
                   <p className="text-gray-700 my-1">{activity.description}</p>
+                  <a href={activity.link} className="font-bold text-xl text-slate-500 hover:text-green-700 cursor-pointer">
+                    See More
+                  </a>
                 </div>
               </div>
             </div>

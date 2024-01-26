@@ -12,7 +12,7 @@ const ExcelDownloader = () => {
 
     return(
         <div>
-            <button onClick={handleDownload} className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700'>
+            <button onClick={handleDownload} className='bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:bg-green-700'>
                 Download Input Template
             </button>
         </div>

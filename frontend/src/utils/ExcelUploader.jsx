@@ -82,7 +82,7 @@ const ExcelUploader = ({setLinkedinPosts, setTwitterArticles, setNewsPaperArticl
                 />
             <label 
                 htmlFor="excel-input" // Associate label with the input element
-                className="bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:text-lg hover:bg-green-700"
+                className="bg-green-600 text-white font-bold py-2 px-4 rounded-full inline-block cursor-pointer text-base transition-all duration-300 ease-in-out hover:bg-green-700"
             >
                 Upload Excel File
             </label>

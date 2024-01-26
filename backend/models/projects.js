@@ -5,7 +5,7 @@ const ProjectSchema = new mongoose.Schema({
     description: String,
     date: String,
     speaker: String,
-    month: String,
+    link: String,
 });
 
 module.exports = mongoose.model("projects", ProjectSchema);
