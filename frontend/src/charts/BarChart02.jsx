@@ -15,7 +15,8 @@ Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legen
 function BarChart02({
   data,
   width,
-  height
+  height,
+  isSkip
 }) {
 
   const [chart, setChart] = useState(null)
@@ -26,6 +27,7 @@ function BarChart02({
 
   useEffect(() => {
     const ctx = canvas.current;
+    const skip = isSkip;
     // eslint-disable-next-line no-unused-vars
     const newChart = new Chart(ctx, {
       type: 'bar',
@@ -45,6 +47,7 @@ function BarChart02({
             border: {
               display: false,
             },
+            min: 0,
             beginAtZero: true,
             ticks: {
               maxTicksLimit: 5,
@@ -65,8 +68,11 @@ function BarChart02({
               display: false,
             },
             ticks: {
-              autoSkipPadding: 48,
+              autoSkip: skip,
+              autoSkipPadding: 0,
               maxRotation: 0,
+              maxLines: 2,
+              maxTicksLimit:10,
               color: darkMode ? textColor.dark : textColor.light,
             },
           },

@@ -185,8 +185,8 @@ useEffect( () => {
               {talks && <DashboardCard03 subjects={talks} name='talks' />}
               {projects && <DashboardCard03 subjects={projects} name='projects' />}
               {papers && <DashboardCard03 subjects={papers} name='papers'/>}        {/* Bar chart */}
-              {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
-              {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />}
+              {/* {netZeroIITKStatus && <DashBoardNetZeroIITK netZeroIITKStatus={netZeroIITKStatus} />}
+              {netZeroArmyCanttStatus && <DashBoardNetZeroArmyCantt netZeroArmyCanttStatus={netZeroArmyCanttStatus} />} */}
               <OutreachLink />
             </div>
 

@@ -15,7 +15,8 @@ Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legen
 function BarChart01({
   data,
   width,
-  height
+  height,
+  isSum
 }) {
 
   const [chart, setChart] = useState(null)
@@ -137,13 +138,14 @@ function BarChart01({
               value.style.marginRight = tailwindConfig().theme.margin[2];
               value.style.pointerEvents = 'none';
               const label = document.createElement('span');
-              label.classList.add('text-slate-500', 'dark:text-slate-400');
+              label.classList.add('text-slate-500', 'font-bold', 'text-2xl', 'dark:text-slate-400');
               label.style.fontSize = tailwindConfig().theme.fontSize.sm[0];
               label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight;
               const theValue = c.data.datasets[item.datasetIndex].data.reduce((a, b) => a + b, 0);
               const valueText = document.createTextNode(formatValue(theValue));
               const labelText = document.createTextNode(item.text);
-              value.appendChild(valueText);
+              if(isSum)
+                value.appendChild(valueText);
               label.appendChild(labelText);
               li.appendChild(button);
               button.appendChild(box);

@@ -1,5 +1,7 @@
 import React from 'react';
 import LineChart from '../../charts/LineChart02';
+import BarChart from '../../charts/BarChart01';
+
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
@@ -29,56 +31,88 @@ function DashboardCard08( {funding1, funding2, funding3}) {
       }
     }
   });
+  // Line chart data
+  // const chartData = {
+  //   labels: labels,
+  //   datasets: [
+  //     // Indigo line
+  //     {
+  //       label: 'Total funding',
+  //       data: fundingNumbers,
+  //       borderColor: tailwindConfig().theme.colors.red[500],
+  //       fill: false,
+  //       borderWidth: 2,
+  //       tension: 0,
+  //       pointRadius: 0,
+  //       pointHoverRadius: 3,
+  //       pointBackgroundColor: tailwindConfig().theme.colors.red[500],
+  //       pointHoverBackgroundColor: tailwindConfig().theme.colors.red[500],
+  //       pointBorderWidth: 0,
+  //       pointHoverBorderWidth: 0,
+  //       clip: 20,
+  //     },
+  //     // Blue line
+  //     {
+  //       label: 'Yearly budget',
+  //       data: funding2,
+  //       borderColor: tailwindConfig().theme.colors.blue[400],
+  //       fill: false,
+  //       borderWidth: 2,
+  //       tension: 0,
+  //       pointRadius: 0,
+  //       pointHoverRadius: 3,
+  //       pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
+  //       pointHoverBackgroundColor: tailwindConfig().theme.colors.blue[400],
+  //       pointBorderWidth: 0,
+  //       pointHoverBorderWidth: 0,
+  //       clip: 20,
+  //     },
+  //     // emerald line
+  //     {
+  //       label: 'Expenditure of budget',
+  //       data: funding3,
+  //       borderColor: tailwindConfig().theme.colors.emerald[500],
+  //       fill: false,
+  //       borderWidth: 2,
+  //       tension: 0,
+  //       pointRadius: 0,
+  //       pointHoverRadius: 3,
+  //       pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+  //       pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+  //       pointBorderWidth: 0,
+  //       pointHoverBorderWidth: 0,
+  //       clip: 20,
+  //     },
+  //   ],
+  // };
   const chartData = {
     labels: labels,
     datasets: [
-      // Indigo line
+      // dark green bars
       {
-        label: 'Total funding',
+        label: 'Funding1',
         data: fundingNumbers,
-        borderColor: tailwindConfig().theme.colors.red[500],
-        fill: false,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.red[500],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.red[500],
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,
-        clip: 20,
+        backgroundColor: tailwindConfig().theme.colors.green[600],
+        hoverBackgroundColor: tailwindConfig().theme.colors.green[700],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
       },
-      // Blue line
+      // green bars
       {
-        label: 'Yearly budget',
+        label: 'Funding2',
         data: funding2,
-        borderColor: tailwindConfig().theme.colors.blue[400],
-        fill: false,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.blue[400],
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,
-        clip: 20,
+        backgroundColor: tailwindConfig().theme.colors.green[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
       },
-      // emerald line
       {
-        label: 'Expenditure of budget',
+        label: 'Funding 3',
         data: funding3,
-        borderColor: tailwindConfig().theme.colors.emerald[500],
-        fill: false,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
-        pointBorderWidth: 0,
-        pointHoverBorderWidth: 0,
-        clip: 20,
+        backgroundColor: tailwindConfig().theme.colors.red[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.red[450],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
       },
     ],
   };
@@ -92,7 +126,8 @@ function DashboardCard08( {funding1, funding2, funding3}) {
           <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
             <h2 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">Funding</h2>
           </header>
-          <LineChart key={uniquekey} data={chartData} width={595} height={248} />
+          {/* <LineChart key={uniquekey} data={chartData} width={595} height={248} /> */}
+          <BarChart key={uniquekey} data={chartData} width={595} height={248} isSum={false}/>
         </div>
       )}
     </>

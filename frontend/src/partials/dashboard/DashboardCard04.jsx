@@ -85,7 +85,7 @@ function DashboardCard04( {linkedinPosts, newsPaperArticles, twitterArticles }) 
       </header> */}
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      <BarChart key={uniqueKey} data={chartData} width={595} height={248} />
+      <BarChart key={uniqueKey} data={chartData} width={595} height={248} isSum={true}/>
     </div>
     }
     </>

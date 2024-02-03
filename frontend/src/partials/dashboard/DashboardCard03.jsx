@@ -80,7 +80,21 @@ function DashboardCard03({subjects, name}) {
     <div className="flex flex-col col-span-full hover:scale-105 transition-transform duration-250 sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
-        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Number of {name} published</h2>
+        {name === 'talks' && (
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">
+            Number of Chandrakanta Kesavan lectures conducted
+          </h2>
+        )}
+        {name === 'projects' && (
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">
+            Number of Faculty Research Proposals funded
+          </h2>
+        )}
+        {name === 'papers' && (
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">
+            Number of Reasearch Papers published
+          </h2>
+        )}
           {/* Icon */}
           {/* <FontAwesomeIcon icon={faCircleArrowRight} /> */}
           {/* <img src={Icon} width="32" height="32" alt="Icon 03" /> */}
@@ -104,7 +118,12 @@ function DashboardCard03({subjects, name}) {
       <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">
         {/* Change the height attribute to adjust the chart height */}
         {/* <LineChart key={uniqueKey} data={chartData} width={389} height={128} /> */}
-        <BarChart02 key={uniqueKey} data={chartData} width={389} height={128} />
+        {name == 'projects' && ( 
+        <BarChart02 key={uniqueKey} data={chartData} width={389} height={128} isSkip={false}/>
+        )} 
+        {name != 'projects' && ( 
+        <BarChart02 key={uniqueKey} data={chartData} width={389} height={128} isSkip={true}/>
+        )} 
       </div>
     </div>
     }
