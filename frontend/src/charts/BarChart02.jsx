@@ -70,7 +70,7 @@ function BarChart02({
             ticks: {
               autoSkip: skip,
               autoSkipPadding: 0,
-              maxRotation: 0,
+              maxRotation: 45,
               maxLines: 2,
               maxTicksLimit:10,
               color: darkMode ? textColor.dark : textColor.light,

@@ -90,7 +90,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
     datasets: [
       // dark green bars
       {
-        label: 'Funding1',
+        label: 'Opening Funds',
         data: fundingNumbers,
         backgroundColor: tailwindConfig().theme.colors.green[600],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[700],
@@ -99,7 +99,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
       },
       // green bars
       {
-        label: 'Funding2',
+        label: 'Total expenditure',
         data: funding2,
         backgroundColor: tailwindConfig().theme.colors.green[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
@@ -107,7 +107,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
         categoryPercentage: 0.66,
       },
       {
-        label: 'Funding 3',
+        label: 'Closing Funds',
         data: funding3,
         backgroundColor: tailwindConfig().theme.colors.red[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.red[450],

@@ -15,9 +15,9 @@ class ExcelDownload extends React.Component {
       { header: 'Newspaper Articles', key: 'newsPaperArticles', width: 15},
       { header: 'Projects', key: 'projects', width: 15},
       { header: 'Papers', key: 'papers', width: 15},
-      { header: 'Total Funding', key: 'funding1', width: 15},
-      { header: 'Monthly Budget', key: 'funding2', width: 15},
-      { header: 'Expenditure', key: 'funding3', width: 15},
+      { header: 'Funding 1', key: 'funding1', width: 15},
+      { header: 'Funding 2', key: 'funding2', width: 15},
+      { header: 'Funding 3', key: 'funding3', width: 15},
       { header: 'Talks', key: 'talks', width: 15},
       { header: 'Linkedin Followers', key: 'linkedinFollowers', width: 15},
       { header: 'Twitter Followers', key: 'twitterFollowers', width: 15},
@@ -31,7 +31,7 @@ class ExcelDownload extends React.Component {
     ];
 
     // Insert after the 7th element (index 6)
-    columns.splice(6, 0, ...newColumns);
+    columns.splice(5, 0, ...newColumns);
     }
     worksheet.columns = columns;
 
