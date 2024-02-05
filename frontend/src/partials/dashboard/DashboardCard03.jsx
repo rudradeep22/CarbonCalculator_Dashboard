@@ -87,7 +87,7 @@ function DashboardCard03({subjects, name}) {
         )}
         {name === 'projects' && (
           <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">
-            Number of Faculty Research Proposals funded
+            Funding for Faculty Research Proposals (in Lakhs)
           </h2>
         )}
         {name === 'papers' && (

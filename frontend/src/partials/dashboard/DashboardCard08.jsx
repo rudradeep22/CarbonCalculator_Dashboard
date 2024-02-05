@@ -85,6 +85,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
   //     },
   //   ],
   // };
+  let funding4 = fundingNumbers.map((value, index) => value + funding2[index] - funding3[index]);
   const chartData = {
     labels: labels,
     datasets: [
@@ -99,7 +100,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
       },
       // green bars
       {
-        label: 'Total expenditure',
+        label: 'Received fund',
         data: funding2,
         backgroundColor: tailwindConfig().theme.colors.green[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
@@ -107,13 +108,21 @@ function DashboardCard08( {funding1, funding2, funding3}) {
         categoryPercentage: 0.66,
       },
       {
-        label: 'Closing Funds',
+        label: 'Expenditure',
         data: funding3,
         backgroundColor: tailwindConfig().theme.colors.red[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.red[450],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
+      {
+        label: 'Total funds available',
+        data: funding4,
+        backgroundColor: tailwindConfig().theme.colors.blue[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.blue[450],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
+      }
     ],
   };
 
