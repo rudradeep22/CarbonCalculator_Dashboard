@@ -85,7 +85,13 @@ function DashboardCard08( {funding1, funding2, funding3}) {
   //     },
   //   ],
   // };
-  let funding4 = fundingNumbers.map((value, index) => value + funding2[index] - funding3[index]);
+  const funding2Numbers = funding2.map(Number);
+  const funding3Numbers = funding3.map(Number);
+  const funding4 = fundingNumbers.map((value, index) => value + funding2Numbers[index] - funding3Numbers[index]);
+  console.log(fundingNumbers);
+  console.log(funding2Numbers);
+  console.log(funding3Numbers);
+  console.log(funding4);
   const chartData = {
     labels: labels,
     datasets: [
@@ -101,7 +107,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
       // green bars
       {
         label: 'Received fund',
-        data: funding2,
+        data: funding2Numbers,
         backgroundColor: tailwindConfig().theme.colors.green[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[450],
         barPercentage: 0.66,
@@ -109,7 +115,7 @@ function DashboardCard08( {funding1, funding2, funding3}) {
       },
       {
         label: 'Expenditure',
-        data: funding3,
+        data: funding3Numbers,
         backgroundColor: tailwindConfig().theme.colors.red[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.red[450],
         barPercentage: 0.66,
